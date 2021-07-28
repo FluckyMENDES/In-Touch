@@ -4,10 +4,10 @@ import Posts from '../components/Posts/Posts';
 
 const ProfilePage = () => {
   return (
-    <div>
+    <>
       <ProfileInfo />
       <Posts />
-    </div>
+    </>
   );
 };
 
