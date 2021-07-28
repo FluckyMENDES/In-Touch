@@ -1,0 +1,18 @@
+.ProfileInfo {
+  display: flex;
+  width: 100%;
+  margin-bottom: var(--blocks-gap);
+
+  & > div:first-child {
+    width: 25%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-right: var(--blocks-gap);
+  }
+
+  & > div:nth-child(2) {
+    width: 75%;
+    flex-grow: 0;
+    flex-shrink: 1;
+  }
+}

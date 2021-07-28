@@ -1,0 +1,9 @@
+@import './../../../assets/scss/mixins';
+
+.PostsList {
+  @include block;
+
+  & li {
+    margin-bottom: 3rem;
+  }
+}

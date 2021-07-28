@@ -1,0 +1,22 @@
+.Button {
+  display: inline-block;
+  border-radius: 0.2em;
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+
+  &.primary {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+
+    &:hover,
+    &:focus-visible {
+      background-color: var(--color-primary-light);
+    }
+
+    &:active {
+      background-color: var(--color-primary-dark);
+    }
+  }
+}

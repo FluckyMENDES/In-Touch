@@ -1,0 +1,32 @@
+.PostsItem {
+  display: flex;
+
+  & > div {
+    &:first-child {
+      width: 10%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-right: 2rem;
+
+      & img {
+        display: block;
+        width: 50px;
+        height: 50px;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    }
+
+    &:nth-child(2) {
+      width: 90%;
+
+      & time {
+        display: block;
+        text-align: right;
+        color: var(--color-gray-500);
+        font-size: 1.2rem;
+      }
+    }
+  }
+}

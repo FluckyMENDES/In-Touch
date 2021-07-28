@@ -1,0 +1,14 @@
+.ProfileRows {
+  & span {
+    display: inline-block;
+
+    &:first-child {
+      width: 25%;
+      color: var(--color-gray-500);
+    }
+
+    &:nth-child(2) {
+      width: 75%;
+    }
+  }
+}

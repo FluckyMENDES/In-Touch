@@ -1,0 +1,14 @@
+@import './../../assets/scss/mixins';
+
+.Posts {
+  @include block;
+
+  margin-bottom: var(--blocks-gap);
+  & h2 {
+    margin-top: 0;
+    margin-bottom: 0.5em;
+  }
+}
+
+.NewPost {
+}

@@ -1,0 +1,6 @@
+@mixin block {
+  background-color: var(--color-white);
+  border-radius: var(--blocks-borader-radius);
+  padding: 1.5rem;
+  box-shadow: var(--box-shadow);
+}

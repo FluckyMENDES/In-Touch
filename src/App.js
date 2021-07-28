@@ -1,9 +1,13 @@
 import './App.css';
+import Layout from './hoc/Layout/Layout';
+import ProfilePage from './pages/ProfilePage';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello World</h1>
+    <div className="App container">
+      <Layout>
+        <ProfilePage />
+      </Layout>
     </div>
   );
 }
