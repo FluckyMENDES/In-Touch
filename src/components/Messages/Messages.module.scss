@@ -1,2 +1,10 @@
 .Messages {
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: var(--color-gray-50);
+  border: 1px solid var(--color-gray-100);
+
+  & > ul li:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
 }

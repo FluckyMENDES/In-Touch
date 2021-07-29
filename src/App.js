@@ -1,6 +1,6 @@
 import './App.css';
 import Layout from './hoc/Layout/Layout';
-import DialogsPage from './pages/DialogsPage';
+import DialogsPage from './pages/DialogsPage/DialogsPage';
 import ProfilePage from './pages/ProfilePage';
 import { Switch, Route } from 'react-router-dom';
 

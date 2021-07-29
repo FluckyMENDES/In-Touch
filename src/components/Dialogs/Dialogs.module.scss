@@ -1,9 +1,0 @@
-@import './../../assets/scss/mixins';
-
-.Dialogs {
-  @include block;
-
-  & ul {
-    width: 25%;
-  }
-}

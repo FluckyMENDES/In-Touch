@@ -9,9 +9,9 @@ const Dialogs = ({ dialogs }) => {
     ));
 
   return (
-    <div className={classes.Dialogs}>
-      <ul>{renderItems(dialogs)}</ul>
-    </div>
+    <>
+      <ul className={classes.Dialogs}>{renderItems(dialogs)}</ul>
+    </>
   );
 };
 
