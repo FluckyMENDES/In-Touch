@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from './DialogItem.module.scss';
+import classes from './Dialog.module.scss';
 import { NavLink } from 'react-router-dom';
 
-const DialogItem = ({ userId, username, userAvatar }) => {
+const Dialog = ({ userId, username, userAvatar }) => {
   return (
-    <li className={classes.DialogItem}>
+    <li className={classes.Dialog}>
       <NavLink to={`/dialogs/${userId}`} activeClassName={classes.active}>
         <img src={userAvatar} alt={username} />
         <span>{username}</span>
@@ -13,4 +13,4 @@ const DialogItem = ({ userId, username, userAvatar }) => {
   );
 };
 
-export default DialogItem;
+export default Dialog;
