@@ -3,7 +3,6 @@ import classes from './NavbarItem.module.scss';
 import { NavLink } from 'react-router-dom';
 
 const NavbarItem = ({ title, path, exact }) => {
-  console.log(classes.active);
   return (
     <li className={classes.NavbarItem}>
       <NavLink

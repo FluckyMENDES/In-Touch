@@ -1,10 +1,11 @@
 import React from 'react';
+import DialogList from '../components/DialogList/DialogList';
 
 const DialogsPage = () => {
   return (
-    <div>
-      <h2>DialogsPage</h2>
-    </div>
+    <>
+      <DialogList />
+    </>
   );
 };
 

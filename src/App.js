@@ -9,6 +9,7 @@ function App() {
     <div className="App container">
       <Layout>
         <Switch>
+          <Route path="/dialogs/:id" component={DialogsPage} />
           <Route path="/dialogs" component={DialogsPage} />
           <Route path="/" exact component={ProfilePage} />
         </Switch>

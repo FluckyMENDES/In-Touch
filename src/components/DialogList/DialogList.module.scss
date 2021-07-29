@@ -1,0 +1,9 @@
+@import './../../assets/scss/mixins';
+
+.DialogList {
+  @include block;
+
+  & ul {
+    width: 25%;
+  }
+}

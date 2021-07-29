@@ -33,6 +33,7 @@ const Navbar = () => {
     ],
   };
 
+  // eslint-disable-next-line no-unused-vars
   const [navLinks, refreshNavLinks] = useState(initialState.menuLinks);
 
   const renderLinks = (links) =>
