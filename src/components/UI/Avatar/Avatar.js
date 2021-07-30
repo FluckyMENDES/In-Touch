@@ -14,7 +14,11 @@ const Avatar = ({
 
   return (
     <div className={cls.join(' ')}>
-      <img src={img} alt={name} style={{ width: `${size}px`, height: `${size}px` }} />
+      <img
+        src={img}
+        alt={name}
+        style={{ width: `${size}px`, height: `${size}px`, margin: '0 auto' }}
+      />
       {withUsername && <strong>{name}</strong>}
     </div>
   );

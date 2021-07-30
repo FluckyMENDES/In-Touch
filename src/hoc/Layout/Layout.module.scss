@@ -6,6 +6,7 @@
     width: 18rem;
     margin-right: var(--blocks-gap);
     align-self: flex-start;
+    flex-shrink: 0;
   }
 
   & > main {

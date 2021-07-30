@@ -1,10 +1,17 @@
 @import './../../../assets/scss/mixins';
 
 .Avatar {
+  text-align: center;
   & img {
     display: block;
     border-radius: 50%;
     object-fit: cover;
+  }
+
+  & strong {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   &.profile {
