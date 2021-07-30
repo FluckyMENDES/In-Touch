@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Messages.module.scss';
 import Message from './Message/Message';
+import NewMessage from './NewMessage/NewMessage';
 
 const Messages = ({ messages }) => {
   const renderMessages = (messages) =>
@@ -16,6 +17,7 @@ const Messages = ({ messages }) => {
   return (
     <div className={classes.Messages}>
       <ul>{renderMessages(messages)}</ul>
+      <NewMessage />
     </div>
   );
 };
