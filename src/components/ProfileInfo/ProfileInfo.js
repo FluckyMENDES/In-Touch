@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './ProfileInfo.module.scss';
-import Avatar from '../Avatar/Avatar';
+import Avatar from '../UI/Avatar/Avatar';
 import ProfileDesc from './ProfileDesc/ProfileDesc';
 
 const ProfileInfo = ({ user }) => {

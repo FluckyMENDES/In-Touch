@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './Avatar.module.scss';
-import blankUserAvatar from './../../assets/img/user.svg';
+import blankUserAvatar from './../../../assets/img/user.svg';
 
 const Avatar = ({
   img = blankUserAvatar,
