@@ -2,6 +2,8 @@
 
 .PostsList {
   @include block;
+  display: flex;
+  flex-direction: column-reverse;
 
   & li {
     margin-bottom: 3rem;

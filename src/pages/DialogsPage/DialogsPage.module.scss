@@ -4,6 +4,8 @@
   @include block;
   display: flex;
 
+  height: calc(100vh - var(--header-height) - (var(--blocks-gap) * 2));
+
   & > ul {
     width: 25%;
     flex-shrink: 0;

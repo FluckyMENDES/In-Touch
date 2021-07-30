@@ -12,7 +12,6 @@ const NewMessage = ({ state, dialogsListeners }) => {
   const onFormSubmit = (e) => {
     e.preventDefault();
     addMessageHandler();
-    console.log(newMessageTextAreaEl.current.value);
   };
 
   const onTextAreaChange = () => {
