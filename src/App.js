@@ -7,7 +7,7 @@ import MusicPage from './pages/MusicPage/MusicPage';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
 import { Switch, Route } from 'react-router-dom';
 
-function App() {
+function App({ state }) {
   return (
     <div className="App container">
       <Layout>
@@ -15,9 +15,15 @@ function App() {
           <Route path="/settings" component={SettingsPage} />
           <Route path="/music" component={MusicPage} />
           <Route path="/news" component={NewsPage} />
-          <Route path="/dialogs/:id" component={DialogsPage} />
-          <Route path="/dialogs" component={DialogsPage} />
-          <Route path="/" exact component={ProfilePage} />
+          <Route
+            path="/dialogs/:id"
+            render={() => <DialogsPage dialogs={state.dialogs} messages={state.messages} />}
+          />
+          <Route
+            path="/dialogs"
+            render={() => <DialogsPage dialogs={state.dialogs} messages={state.messages} />}
+          />
+          <Route path="/" exact render={() => <ProfilePage posts={state.posts} />} />
         </Switch>
       </Layout>
     </div>
