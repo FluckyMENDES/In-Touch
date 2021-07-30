@@ -1,5 +1,8 @@
 import profileAvatar from '../assets/img/mock-profile-avatar.jpg';
-import { renderEntireTree } from '../render';
+
+let renderEntireTree = () => {
+  console.log('renderEntireTree function isn`t defined');
+};
 
 const state = {
   user: {
@@ -138,6 +141,10 @@ export const dialogsListeners = {
     state.pages.dialogs.newMessageValue = newValue;
     renderEntireTree(state);
   },
+};
+
+export const subscribe = (observer) => {
+  renderEntireTree = observer;
 };
 
 export default state;
