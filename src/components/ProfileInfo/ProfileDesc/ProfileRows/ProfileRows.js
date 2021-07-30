@@ -1,24 +1,30 @@
 import React from 'react';
 import classes from './ProfileRows.module.scss';
 
-const ProfileRows = () => {
+const ProfileRows = ({ user }) => {
+  const { dateOfBirth, city, education, website } = user.props;
+
   return (
     <div className={classes.ProfileRows}>
       <div>
         <span>Birthday:</span>
-        <span>30 October 1989</span>
+        <span>{dateOfBirth}</span>
       </div>
       <div>
         <span>City:</span>
-        <span>Moscow</span>
+        <span>{city}</span>
       </div>
       <div>
         <span>Education:</span>
-        <span>MIU</span>
+        <span>{education}</span>
       </div>
       <div>
         <span>Website:</span>
-        <span>http://olegkireev.ru</span>
+        <span>
+          <a href={website} target="_blank" rel="noreferrer">
+            {website}
+          </a>
+        </span>
       </div>
     </div>
   );

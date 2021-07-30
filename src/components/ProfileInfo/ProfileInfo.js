@@ -3,11 +3,11 @@ import classes from './ProfileInfo.module.scss';
 import Avatar from '../Avatar/Avatar';
 import ProfileDesc from './ProfileDesc/ProfileDesc';
 
-const ProfileInfo = () => {
+const ProfileInfo = ({ user }) => {
   return (
     <div className={classes.ProfileInfo}>
-      <Avatar />
-      <ProfileDesc />
+      <Avatar type="big" img="" />
+      <ProfileDesc user={user} />
     </div>
   );
 };

@@ -2,12 +2,13 @@ import React from 'react';
 import classes from './ProfileDesc.module.scss';
 import ProfileRows from './ProfileRows/ProfileRows';
 
-const ProfileDesc = () => {
+const ProfileDesc = ({ user }) => {
+  const { firstName, lastName } = user.name;
   return (
     <div className={classes.ProfileDesc}>
-      <h1>Oleg Kireev</h1>
+      <h1>{`${firstName} ${lastName}`}</h1>
       <hr />
-      <ProfileRows />
+      <ProfileRows user={user} />
     </div>
   );
 };

@@ -4,7 +4,22 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
 
+import profileAvatar from './assets/img/mock-profile-avatar.jpg';
+
 const state = {
+  user: {
+    name: {
+      firstName: 'Oleg',
+      lastName: 'Kireev',
+    },
+    avatar: profileAvatar,
+    props: {
+      dateOfBirth: '30.10.1989',
+      city: 'Moscow',
+      education: 'MIU',
+      website: 'http://olegkireev.ru',
+    },
+  },
   posts: [
     {
       author: 'Username1',

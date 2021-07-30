@@ -23,7 +23,11 @@ function App({ state }) {
             path="/dialogs"
             render={() => <DialogsPage dialogs={state.dialogs} messages={state.messages} />}
           />
-          <Route path="/" exact render={() => <ProfilePage posts={state.posts} />} />
+          <Route
+            path="/"
+            exact
+            render={() => <ProfilePage posts={state.posts} user={state.user} />}
+          />
         </Switch>
       </Layout>
     </div>
