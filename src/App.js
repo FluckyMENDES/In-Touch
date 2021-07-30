@@ -7,7 +7,7 @@ import MusicPage from './pages/MusicPage/MusicPage';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
 import { Switch, Route } from 'react-router-dom';
 
-function App({ state, profileListeners }) {
+function App({ state, profileListeners, dialogsListeners }) {
   return (
     <div className="App container">
       <Layout>
@@ -17,11 +17,25 @@ function App({ state, profileListeners }) {
           <Route path="/news" component={NewsPage} />
           <Route
             path="/dialogs/:id"
-            render={() => <DialogsPage dialogs={state.dialogs} messages={state.messages} />}
+            render={() => (
+              <DialogsPage
+                state={state.pages.dialogs}
+                dialogsListeners={dialogsListeners}
+                dialogs={state.dialogs}
+                messages={state.messages}
+              />
+            )}
           />
           <Route
             path="/dialogs"
-            render={() => <DialogsPage dialogs={state.dialogs} messages={state.messages} />}
+            render={() => (
+              <DialogsPage
+                state={state.pages.dialogs}
+                dialogsListeners={dialogsListeners}
+                dialogs={state.dialogs}
+                messages={state.messages}
+              />
+            )}
           />
           <Route
             path="/"

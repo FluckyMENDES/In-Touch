@@ -94,6 +94,9 @@ const state = {
     profile: {
       newPostValue: '',
     },
+    dialogs: {
+      newMessageValue: '',
+    },
   },
 };
 
@@ -113,6 +116,26 @@ export const profileListeners = {
   },
   changeNewPostValueHandler: (newValue) => {
     state.pages.profile.newPostValue = newValue;
+    renderEntireTree(state);
+  },
+};
+
+export const dialogsListeners = {
+  addMessageHandler: () => {
+    const newMessage = {
+      id: state.messages.length + 1,
+      text: state.pages.dialogs.newMessageValue,
+      authorId: 1,
+      date: new Date().toLocaleString(),
+      isRead: false,
+    };
+
+    state.messages.push(newMessage);
+    state.pages.dialogs.newMessageValue = '';
+    renderEntireTree(state);
+  },
+  changeNewMessageValueHandler: (newValue) => {
+    state.pages.dialogs.newMessageValue = newValue;
     renderEntireTree(state);
   },
 };
