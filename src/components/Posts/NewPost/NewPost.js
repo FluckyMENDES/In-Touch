@@ -3,18 +3,29 @@ import classes from './NewPost.module.scss';
 import Textarea from '../../UI/Textarea/Textarea';
 import Button from './../../UI/Button/Button';
 
-const NewPost = ({ addPostHandler }) => {
-  const textAreaEl = createRef();
+const NewPost = ({ state, profileListeners }) => {
+  const { addPostHandler, changeNewPostValueHandler } = profileListeners;
+
+  const newPostValue = state.newPostValue;
+  const newPostTextAreaEl = createRef();
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    addPostHandler(textAreaEl.current.value);
-    textAreaEl.current.value = null;
+    addPostHandler();
+  };
+
+  const onTextAreaChange = () => {
+    changeNewPostValueHandler(newPostTextAreaEl.current.value);
   };
 
   return (
     <form className={classes.NewPost} onSubmit={onFormSubmit}>
-      <Textarea placeholder="Write your news..." elRef={textAreaEl} />
+      <Textarea
+        value={newPostValue}
+        placeholder="Write your news..."
+        elRef={newPostTextAreaEl}
+        onChange={onTextAreaChange}
+      />
       <Button type="submit" kind="primary">
         Send
       </Button>

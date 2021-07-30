@@ -90,19 +90,31 @@ const state = {
       isRead: false,
     },
   ],
+  pages: {
+    profile: {
+      newPostValue: '',
+    },
+  },
 };
 
-export const addPostHandler = (message) => {
-  const newPost = {
-    id: state.posts.length + 1,
-    author: 'Oleg Kireev',
-    authorAvatarUrl: profileAvatar,
-    date: new Date().toLocaleString(),
-    text: message,
-  };
+export const profileListeners = {
+  addPostHandler: () => {
+    const newPost = {
+      id: state.posts.length + 1,
+      author: 'Oleg Kireev',
+      authorAvatarUrl: profileAvatar,
+      date: new Date().toLocaleString(),
+      text: state.pages.profile.newPostValue,
+    };
 
-  state.posts.push(newPost);
-  renderEntireTree(state);
+    state.posts.push(newPost);
+    state.pages.profile.newPostValue = '';
+    renderEntireTree(state);
+  },
+  changeNewPostValueHandler: (newValue) => {
+    state.pages.profile.newPostValue = newValue;
+    renderEntireTree(state);
+  },
 };
 
 export default state;

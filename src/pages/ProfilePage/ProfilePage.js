@@ -2,11 +2,11 @@ import React from 'react';
 import ProfileInfo from './../../components/ProfileInfo/ProfileInfo';
 import Posts from './../../components/Posts/Posts';
 
-const ProfilePage = ({ posts, user, addPostHandler }) => {
+const ProfilePage = ({ state, posts, user, profileListeners }) => {
   return (
     <>
       <ProfileInfo user={user} />
-      <Posts posts={posts} addPostHandler={addPostHandler} />
+      <Posts state={state} posts={posts} profileListeners={profileListeners} />
     </>
   );
 };

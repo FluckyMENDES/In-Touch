@@ -7,7 +7,7 @@ import MusicPage from './pages/MusicPage/MusicPage';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
 import { Switch, Route } from 'react-router-dom';
 
-function App({ state, addPostHandler }) {
+function App({ state, profileListeners }) {
   return (
     <div className="App container">
       <Layout>
@@ -27,7 +27,12 @@ function App({ state, addPostHandler }) {
             path="/"
             exact
             render={() => (
-              <ProfilePage posts={state.posts} user={state.user} addPostHandler={addPostHandler} />
+              <ProfilePage
+                state={state.pages.profile}
+                posts={state.posts}
+                user={state.user}
+                profileListeners={profileListeners}
+              />
             )}
           />
         </Switch>
