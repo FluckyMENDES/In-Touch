@@ -1,13 +1,11 @@
 import React from 'react';
 import classes from './PostsItem.module.scss';
+import Avatar from '../../../Avatar/Avatar';
 
 const PostsItem = ({ author, authorAvatarUrl, date, text }) => {
   return (
     <li className={classes.PostsItem}>
-      <div>
-        <img src={authorAvatarUrl} alt={author} />
-        <strong>{author}</strong>
-      </div>
+      <Avatar img={authorAvatarUrl} name={author} size={50} withUsername />
       <div>
         <p>{text}</p>
         <time>{date}</time>

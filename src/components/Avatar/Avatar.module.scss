@@ -1,11 +1,18 @@
 @import './../../assets/scss/mixins';
 
 .Avatar {
-  @include block;
-  line-height: 0;
-
   & img {
-    border-radius: 2px;
+    display: block;
+    border-radius: 50%;
     object-fit: cover;
+  }
+
+  &.profile {
+    @include block;
+
+    line-height: 0;
+    img {
+      border-radius: 0.2rem;
+    }
   }
 }

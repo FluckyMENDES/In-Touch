@@ -12,7 +12,9 @@ const state = {
       firstName: 'Oleg',
       lastName: 'Kireev',
     },
-    avatar: profileAvatar,
+    avatar: {
+      url: profileAvatar,
+    },
     props: {
       dateOfBirth: '30.10.1989',
       city: 'Moscow',

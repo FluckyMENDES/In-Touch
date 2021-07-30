@@ -4,9 +4,11 @@ import Avatar from '../Avatar/Avatar';
 import ProfileDesc from './ProfileDesc/ProfileDesc';
 
 const ProfileInfo = ({ user }) => {
+  const username = `${user.name.firstName} ${user.name.lastName}`;
+
   return (
     <div className={classes.ProfileInfo}>
-      <Avatar type="big" img="" />
+      <Avatar type="profile" img={user.avatar.url} name={username} />
       <ProfileDesc user={user} />
     </div>
   );

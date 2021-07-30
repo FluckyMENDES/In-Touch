@@ -8,14 +8,6 @@
       align-items: center;
       flex-direction: column;
       margin-right: 2rem;
-
-      & img {
-        display: block;
-        width: 50px;
-        height: 50px;
-        object-fit: cover;
-        border-radius: 50%;
-      }
     }
 
     &:nth-child(2) {
