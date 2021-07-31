@@ -3,9 +3,8 @@ import classes from './NewMessage.module.scss';
 import Textarea from '../../UI/Textarea/Textarea';
 import Button from '../../UI/Button/Button';
 
-const NewMessage = ({ state, dialogsListeners }) => {
+const NewMessage = ({ state, addMessageHandler, changeNewMessageValueHandler }) => {
   const { newMessageValue } = state;
-  const { addMessageHandler, changeNewMessageValueHandler } = dialogsListeners;
 
   const newMessageTextAreaEl = useRef();
 

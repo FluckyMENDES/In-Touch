@@ -3,9 +3,7 @@ import classes from './NewPost.module.scss';
 import Textarea from '../../UI/Textarea/Textarea';
 import Button from './../../UI/Button/Button';
 
-const NewPost = ({ state, profileListeners }) => {
-  const { addPostHandler, changeNewPostValueHandler } = profileListeners;
-
+const NewPost = ({ state, addPostHandler, changeNewPostValueHandler }) => {
   const newPostValue = state.newPostValue;
   const newPostTextAreaEl = createRef();
 

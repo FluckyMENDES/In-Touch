@@ -3,9 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { profileListeners, dialogsListeners } from './store/state';
-import state from './store/state';
-import { subscribe } from './store/state';
+import store from './store/store';
 
 const renderEntireTree = (state) => {
   ReactDOM.render(
@@ -13,8 +11,10 @@ const renderEntireTree = (state) => {
       <BrowserRouter>
         <App
           state={state}
-          profileListeners={profileListeners}
-          dialogsListeners={dialogsListeners}
+          addPostHandler={store.addPostHandler.bind(store)}
+          changeNewPostValueHandler={store.changeNewPostValueHandler.bind(store)}
+          addMessageHandler={store.addMessageHandler.bind(store)}
+          changeNewMessageValueHandler={store.changeNewMessageValueHandler.bind(store)}
         />
       </BrowserRouter>
     </React.StrictMode>,
@@ -22,5 +22,5 @@ const renderEntireTree = (state) => {
   );
 };
 
-renderEntireTree(state);
-subscribe(renderEntireTree);
+renderEntireTree(store.getState());
+store.subscribe(renderEntireTree);

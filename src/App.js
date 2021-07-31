@@ -7,7 +7,13 @@ import MusicPage from './pages/MusicPage/MusicPage';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
 import { Switch, Route } from 'react-router-dom';
 
-function App({ state, profileListeners, dialogsListeners }) {
+function App({
+  state,
+  addPostHandler,
+  changeNewPostValueHandler,
+  addMessageHandler,
+  changeNewMessageValueHandler,
+}) {
   return (
     <div className="App container">
       <Layout>
@@ -20,7 +26,8 @@ function App({ state, profileListeners, dialogsListeners }) {
             render={() => (
               <DialogsPage
                 state={state.pages.dialogs}
-                dialogsListeners={dialogsListeners}
+                addMessageHandler={addMessageHandler}
+                changeNewMessageValueHandler={changeNewMessageValueHandler}
                 dialogs={state.dialogs}
                 messages={state.messages}
               />
@@ -31,7 +38,8 @@ function App({ state, profileListeners, dialogsListeners }) {
             render={() => (
               <DialogsPage
                 state={state.pages.dialogs}
-                dialogsListeners={dialogsListeners}
+                addMessageHandler={addMessageHandler}
+                changeNewMessageValueHandler={changeNewMessageValueHandler}
                 dialogs={state.dialogs}
                 messages={state.messages}
               />
@@ -45,7 +53,8 @@ function App({ state, profileListeners, dialogsListeners }) {
                 state={state.pages.profile}
                 posts={state.posts}
                 user={state.user}
-                profileListeners={profileListeners}
+                addPostHandler={addPostHandler}
+                changeNewPostValueHandler={changeNewPostValueHandler}
               />
             )}
           />
