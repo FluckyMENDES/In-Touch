@@ -3,7 +3,12 @@ import classes from './Messages.module.scss';
 import Message from './Message/Message';
 import NewMessage from './NewMessage/NewMessage';
 
-const Messages = ({ state, dispatch, messages }) => {
+const Messages = ({
+  messages,
+  newMessageValue,
+  addNewMessageHandler,
+  changeNewMessageValueHandler,
+}) => {
   const messagesEl = useRef();
 
   const scrollToBottom = () => {
@@ -28,7 +33,11 @@ const Messages = ({ state, dispatch, messages }) => {
   return (
     <div className={classes.Messages}>
       <ul ref={messagesEl}>{renderMessages(messages)}</ul>
-      <NewMessage state={state} dispatch={dispatch} />
+      <NewMessage
+        newMessageValue={newMessageValue}
+        addNewMessageHandler={addNewMessageHandler}
+        changeNewMessageValueHandler={changeNewMessageValueHandler}
+      />
     </div>
   );
 };

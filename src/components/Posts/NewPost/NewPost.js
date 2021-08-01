@@ -2,20 +2,18 @@ import React, { createRef } from 'react';
 import classes from './NewPost.module.scss';
 import Textarea from '../../UI/Textarea/Textarea';
 import Button from './../../UI/Button/Button';
-import { addPost, changeNewPostValue } from '../../../store/actions';
 
-const NewPost = ({ state, dispatch }) => {
-  const { newPostValue } = state;
+const NewPost = ({ newPostValue, newPostChangeHandler, newPostAddHandler }) => {
   const newPostTextAreaEl = createRef();
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(addPost());
+    newPostAddHandler();
   };
 
   const onTextAreaChange = () => {
     const value = newPostTextAreaEl.current.value;
-    dispatch(changeNewPostValue(value));
+    newPostChangeHandler(value);
   };
 
   return (

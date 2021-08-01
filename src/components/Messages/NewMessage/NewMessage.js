@@ -2,21 +2,18 @@ import React, { useRef } from 'react';
 import classes from './NewMessage.module.scss';
 import Textarea from '../../UI/Textarea/Textarea';
 import Button from '../../UI/Button/Button';
-import { addMessage, changeNewMessageValue } from './../../../store/actions';
 
-const NewMessage = ({ state, dispatch }) => {
-  const { newMessageValue } = state;
-
+const NewMessage = ({ newMessageValue, addNewMessageHandler, changeNewMessageValueHandler }) => {
   const newMessageTextAreaEl = useRef();
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch(addMessage());
+    addNewMessageHandler();
   };
 
   const onTextAreaChange = () => {
     const value = newMessageTextAreaEl.current.value;
-    dispatch(changeNewMessageValue(value));
+    changeNewMessageValueHandler(value);
   };
 
   return (

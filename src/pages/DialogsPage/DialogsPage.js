@@ -2,13 +2,29 @@ import React from 'react';
 import classes from './DialogsPage.module.scss';
 import Dialogs from './../../components/Dialogs/Dialogs';
 import Messages from '../../components/Messages/Messages';
+import { addMessage, changeNewMessageValue } from '../../store/actions';
 
-const DialogsPage = ({ state, dispatch }) => {
-  const { dialogs, messages } = state;
+const DialogsPage = ({ store }) => {
+  const { dispatch } = store;
+  const { dialogs, messages, newMessageValue } = store.getState().dialogsPage;
+
+  const addNewMessageHandler = () => {
+    dispatch(addMessage());
+  };
+
+  const changeNewMessageValueHandler = (value) => {
+    dispatch(changeNewMessageValue(value));
+  };
+
   return (
     <div className={classes.DialogsPage}>
       <Dialogs dialogs={dialogs} />
-      <Messages state={state} dispatch={dispatch} messages={messages} />
+      <Messages
+        messages={messages}
+        newMessageValue={newMessageValue}
+        addNewMessageHandler={addNewMessageHandler}
+        changeNewMessageValueHandler={changeNewMessageValueHandler}
+      />
     </div>
   );
 };

@@ -4,7 +4,7 @@ import Dialog from './Dialog/Dialog';
 
 const Dialogs = ({ dialogs }) => {
   const renderItems = (items) =>
-    items.map(({ userId, username, userAvatar }, index) => (
+    items.map(({ userId, username, userAvatar }) => (
       <Dialog key={userId} userId={userId} username={username} userAvatar={userAvatar} />
     ));
 
