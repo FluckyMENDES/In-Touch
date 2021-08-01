@@ -2,6 +2,8 @@ import React, { useRef, useEffect } from 'react';
 import classes from './Messages.module.scss';
 import Message from './Message/Message';
 import NewMessage from './NewMessage/NewMessage';
+import { connect } from 'react-redux';
+import { addMessage, changeNewMessageValue } from '../../store/actions';
 
 const Messages = ({
   messages,
@@ -42,4 +44,19 @@ const Messages = ({
   );
 };
 
-export default Messages;
+const mapStateToProps = (state) => ({
+  messages: state.dialogsPage.messages,
+  newMessageValue: state.dialogsPage.newMessageValue,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  addNewMessageHandler: () => {
+    dispatch(addMessage());
+  },
+
+  changeNewMessageValueHandler: (value) => {
+    dispatch(changeNewMessageValue(value));
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);
