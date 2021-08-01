@@ -3,9 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import store from './store/store';
+import { store } from './store/redux-store';
 
 const renderEntireTree = (state) => {
+  console.log(store);
   ReactDOM.render(
     <React.StrictMode>
       <BrowserRouter>
@@ -17,4 +18,4 @@ const renderEntireTree = (state) => {
 };
 
 renderEntireTree(store.getState());
-store.subscribe(renderEntireTree);
+store.subscribe(renderEntireTree.bind(this, store.getState()));
