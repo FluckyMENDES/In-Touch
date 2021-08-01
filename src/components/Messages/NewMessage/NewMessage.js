@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import classes from './NewMessage.module.scss';
 import Textarea from '../../UI/Textarea/Textarea';
 import Button from '../../UI/Button/Button';
+import { addMessage, changeNewMessageValue } from './../../../store/actions';
 
 const NewMessage = ({ state, dispatch }) => {
   const { newMessageValue } = state;
@@ -10,11 +11,12 @@ const NewMessage = ({ state, dispatch }) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: 'ADD_MESSAGE' });
+    dispatch(addMessage());
   };
 
   const onTextAreaChange = () => {
-    dispatch({ type: 'CHANGE_NEW_MESSAGE_VALUE', payload: newMessageTextAreaEl.current.value });
+    const value = newMessageTextAreaEl.current.value;
+    dispatch(changeNewMessageValue(value));
   };
 
   return (

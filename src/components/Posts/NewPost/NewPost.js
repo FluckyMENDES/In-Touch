@@ -2,6 +2,7 @@ import React, { createRef } from 'react';
 import classes from './NewPost.module.scss';
 import Textarea from '../../UI/Textarea/Textarea';
 import Button from './../../UI/Button/Button';
+import { addPost, changeNewPostValue } from '../../../store/actions';
 
 const NewPost = ({ state, dispatch }) => {
   const newPostValue = state.newPostValue;
@@ -9,11 +10,12 @@ const NewPost = ({ state, dispatch }) => {
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: 'ADD_POST' });
+    dispatch(addPost());
   };
 
   const onTextAreaChange = () => {
-    dispatch({ type: 'CHANGE_NEW_POST_VALUE', payload: newPostTextAreaEl.current.value });
+    const value = newPostTextAreaEl.current.value;
+    dispatch(changeNewPostValue(value));
   };
 
   return (

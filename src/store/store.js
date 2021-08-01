@@ -1,4 +1,5 @@
 import profileAvatar from '../assets/img/mock-profile-avatar.jpg';
+import { ADD_POST, CHANGE_NEW_POST_VALUE } from './actionTypes';
 
 let store = {
   _state: {
@@ -110,10 +111,10 @@ let store = {
   },
   dispatch({ type, payload }) {
     switch (type) {
-      case 'ADD_POST':
+      case ADD_POST:
         this._addPostHandler();
         break;
-      case 'CHANGE_NEW_POST_VALUE':
+      case CHANGE_NEW_POST_VALUE:
         this._changeNewPostValueHandler(payload);
         break;
       case 'ADD_MESSAGE':
