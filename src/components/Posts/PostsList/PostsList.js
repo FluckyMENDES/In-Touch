@@ -2,7 +2,8 @@ import React from 'react';
 import classes from './PostsList.module.scss';
 import PostsItem from './PostsItem/PostsItem';
 
-const PostsList = ({ posts }) => {
+const PostsList = ({ state }) => {
+  const { posts } = state;
   const renderPosts = (items) => {
     return items.map(({ author, authorAvatarUrl, date, text }, index) => (
       <PostsItem

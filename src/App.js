@@ -17,36 +17,17 @@ function App({ state, dispatch }) {
           <Route path="/news" component={NewsPage} />
           <Route
             path="/dialogs/:id"
-            render={() => (
-              <DialogsPage
-                state={state.pages.dialogs}
-                messages={state.messages}
-                dialogs={state.dialogs}
-                dispatch={dispatch}
-              />
-            )}
+            render={() => <DialogsPage state={state.dialogsPage} dispatch={dispatch} />}
           />
           <Route
             path="/dialogs"
-            render={() => (
-              <DialogsPage
-                state={state.pages.dialogs}
-                messages={state.messages}
-                dialogs={state.dialogs}
-                dispatch={dispatch}
-              />
-            )}
+            render={() => <DialogsPage state={state.dialogsPage} dispatch={dispatch} />}
           />
           <Route
             path="/"
             exact
             render={() => (
-              <ProfilePage
-                state={state.pages.profile}
-                posts={state.posts}
-                user={state.user}
-                dispatch={dispatch}
-              />
+              <ProfilePage state={state.profilePage} user={state.global.user} dispatch={dispatch} />
             )}
           />
         </Switch>

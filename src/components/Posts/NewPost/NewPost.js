@@ -5,7 +5,7 @@ import Button from './../../UI/Button/Button';
 import { addPost, changeNewPostValue } from '../../../store/actions';
 
 const NewPost = ({ state, dispatch }) => {
-  const newPostValue = state.newPostValue;
+  const { newPostValue } = state;
   const newPostTextAreaEl = createRef();
 
   const onFormSubmit = (e) => {

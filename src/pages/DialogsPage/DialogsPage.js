@@ -3,7 +3,8 @@ import classes from './DialogsPage.module.scss';
 import Dialogs from './../../components/Dialogs/Dialogs';
 import Messages from '../../components/Messages/Messages';
 
-const DialogsPage = ({ state, dispatch, dialogs, messages }) => {
+const DialogsPage = ({ state, dispatch }) => {
+  const { dialogs, messages } = state;
   return (
     <div className={classes.DialogsPage}>
       <Dialogs dialogs={dialogs} />
