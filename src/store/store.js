@@ -1,10 +1,6 @@
+import dialogsReducer from './reducers/dialogsReducer';
+import profileReducer from './reducers/profileReducer';
 import profileAvatar from '../assets/img/mock-profile-avatar.jpg';
-import {
-  ADD_POST,
-  CHANGE_NEW_POST_VALUE,
-  ADD_MESSAGE,
-  CHANGE_NEW_MESSAGE_VALUE,
-} from './actionTypes';
 
 let store = {
   _state: {
@@ -114,59 +110,10 @@ let store = {
   subscribe(observer) {
     this._callSubscriber = observer;
   },
-  dispatch({ type, payload }) {
-    switch (type) {
-      case ADD_POST:
-        this._addPostHandler();
-        break;
-      case CHANGE_NEW_POST_VALUE:
-        this._changeNewPostValueHandler(payload);
-        break;
-      case ADD_MESSAGE:
-        this._addMessageHandler();
-        break;
-      case CHANGE_NEW_MESSAGE_VALUE:
-        this._changeNewMessageValueHandler(payload);
-        break;
-      default:
-        return true;
-    }
-  },
-  _addPostHandler() {
-    const newPost = {
-      id: this._state.profilePage.posts.length + 1,
-      author: 'Oleg Kireev',
-      authorAvatarUrl: profileAvatar,
-      date: new Date().toLocaleString(),
-      text: this._state.profilePage.newPostValue,
-    };
+  dispatch(action) {
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
 
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostValue = '';
-    this._callSubscriber(this._state);
-  },
-
-  _changeNewPostValueHandler(newValue) {
-    this._state.profilePage.newPostValue = newValue;
-    this._callSubscriber(this._state);
-  },
-
-  _addMessageHandler() {
-    const newMessage = {
-      id: this._state.dialogsPage.messages.length + 1,
-      text: this._state.dialogsPage.newMessageValue,
-      authorId: 1,
-      date: new Date().toLocaleString(),
-      isRead: false,
-    };
-
-    this._state.dialogsPage.messages.push(newMessage);
-    this._state.dialogsPage.newMessageValue = '';
-    this._callSubscriber(this._state);
-  },
-
-  _changeNewMessageValueHandler(newValue) {
-    this._state.dialogsPage.newMessageValue = newValue;
     this._callSubscriber(this._state);
   },
 };
