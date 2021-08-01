@@ -3,22 +3,11 @@ import classes from './DialogsPage.module.scss';
 import Dialogs from './../../components/Dialogs/Dialogs';
 import Messages from '../../components/Messages/Messages';
 
-const DialogsPage = ({
-  state,
-  addMessageHandler,
-  changeNewMessageValueHandler,
-  dialogs,
-  messages,
-}) => {
+const DialogsPage = ({ state, dispatch, dialogs, messages }) => {
   return (
     <div className={classes.DialogsPage}>
       <Dialogs dialogs={dialogs} />
-      <Messages
-        state={state}
-        addMessageHandler={addMessageHandler}
-        changeNewMessageValueHandler={changeNewMessageValueHandler}
-        messages={messages}
-      />
+      <Messages state={state} dispatch={dispatch} messages={messages} />
     </div>
   );
 };

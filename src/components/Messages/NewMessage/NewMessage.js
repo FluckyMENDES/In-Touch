@@ -3,18 +3,18 @@ import classes from './NewMessage.module.scss';
 import Textarea from '../../UI/Textarea/Textarea';
 import Button from '../../UI/Button/Button';
 
-const NewMessage = ({ state, addMessageHandler, changeNewMessageValueHandler }) => {
+const NewMessage = ({ state, dispatch }) => {
   const { newMessageValue } = state;
 
   const newMessageTextAreaEl = useRef();
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    addMessageHandler();
+    dispatch({ type: 'ADD_MESSAGE' });
   };
 
   const onTextAreaChange = () => {
-    changeNewMessageValueHandler(newMessageTextAreaEl.current.value);
+    dispatch({ type: 'CHANGE_NEW_MESSAGE_VALUE', payload: newMessageTextAreaEl.current.value });
   };
 
   return (

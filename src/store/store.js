@@ -105,7 +105,28 @@ let store = {
   _callSubscriber() {
     console.log('_callSubscriber function isn`t defined');
   },
-  addPostHandler() {
+  subscribe(observer) {
+    this._callSubscriber = observer;
+  },
+  dispatch({ type, payload }) {
+    switch (type) {
+      case 'ADD_POST':
+        this._addPostHandler();
+        break;
+      case 'CHANGE_NEW_POST_VALUE':
+        this._changeNewPostValueHandler(payload);
+        break;
+      case 'ADD_MESSAGE':
+        this._addMessageHandler();
+        break;
+      case 'CHANGE_NEW_MESSAGE_VALUE':
+        this._changeNewMessageValueHandler(payload);
+        break;
+      default:
+        return true;
+    }
+  },
+  _addPostHandler() {
     const newPost = {
       id: this._state.posts.length + 1,
       author: 'Oleg Kireev',
@@ -118,12 +139,11 @@ let store = {
     this._state.pages.profile.newPostValue = '';
     this._callSubscriber(this._state);
   },
-  changeNewPostValueHandler(newValue) {
-    debugger;
+  _changeNewPostValueHandler(newValue) {
     this._state.pages.profile.newPostValue = newValue;
     this._callSubscriber(this._state);
   },
-  addMessageHandler() {
+  _addMessageHandler() {
     const newMessage = {
       id: this._state.messages.length + 1,
       text: this._state.pages.dialogs.newMessageValue,
@@ -136,12 +156,9 @@ let store = {
     this._state.pages.dialogs.newMessageValue = '';
     this._callSubscriber(this._state);
   },
-  changeNewMessageValueHandler(newValue) {
+  _changeNewMessageValueHandler(newValue) {
     this._state.pages.dialogs.newMessageValue = newValue;
     this._callSubscriber(this._state);
-  },
-  subscribe(observer) {
-    this._callSubscriber = observer;
   },
 };
 

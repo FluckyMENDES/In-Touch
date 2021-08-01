@@ -3,17 +3,17 @@ import classes from './NewPost.module.scss';
 import Textarea from '../../UI/Textarea/Textarea';
 import Button from './../../UI/Button/Button';
 
-const NewPost = ({ state, addPostHandler, changeNewPostValueHandler }) => {
+const NewPost = ({ state, dispatch }) => {
   const newPostValue = state.newPostValue;
   const newPostTextAreaEl = createRef();
 
   const onFormSubmit = (e) => {
     e.preventDefault();
-    addPostHandler();
+    dispatch({ type: 'ADD_POST' });
   };
 
   const onTextAreaChange = () => {
-    changeNewPostValueHandler(newPostTextAreaEl.current.value);
+    dispatch({ type: 'CHANGE_NEW_POST_VALUE', payload: newPostTextAreaEl.current.value });
   };
 
   return (
