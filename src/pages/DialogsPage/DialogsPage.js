@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classes from './DialogsPage.module.scss';
 import Dialogs from './../../components/Dialogs/Dialogs';
 import Messages from '../../components/Messages/Messages';
 import { addMessage, changeNewMessageValue } from '../../store/actions';
+import { StoreContext } from '../../context/StoreContext';
 
-const DialogsPage = ({ store }) => {
+const DialogsPage = () => {
+  const store = useContext(StoreContext);
   const { dispatch } = store;
   const { dialogs, messages, newMessageValue } = store.getState().dialogsPage;
 

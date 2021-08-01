@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import ProfileInfo from './../../components/ProfileInfo/ProfileInfo';
 import Posts from './../../components/Posts/Posts';
 import { addPost, changeNewPostValue } from '../../store/actions';
+import { StoreContext } from '../../context/StoreContext';
 
-const ProfilePage = ({ store }) => {
+const ProfilePage = () => {
+  const store = useContext(StoreContext);
   const { dispatch, getState } = store;
 
   const newPostChangeHandler = (text) => {
