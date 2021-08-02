@@ -1,6 +1,5 @@
 import { ADD_POST, CHANGE_NEW_POST_VALUE } from '../actionTypes';
 import profileAvatar from '../../assets/img/mock-profile-avatar.jpg';
-import { cloneDeepWith } from 'lodash';
 
 const initialState = {
   newPostValue: '',
@@ -30,24 +29,27 @@ const initialState = {
 };
 
 const profileReducer = (state = initialState, action) => {
-  let stateCopy = cloneDeepWith(state);
   switch (action.type) {
     case ADD_POST:
       const newPost = {
-        id: stateCopy.posts.length + 1,
+        id: state.posts.length + 1,
         author: 'Oleg Kireev',
         authorAvatarUrl: profileAvatar,
         date: new Date().toLocaleString(),
-        text: stateCopy.newPostValue,
+        text: state.newPostValue,
       };
 
-      stateCopy.posts.push(newPost);
-      stateCopy.newPostValue = '';
-      return stateCopy;
+      return {
+        ...state,
+        posts: [...state.posts, newPost],
+        newPostValue: '',
+      };
 
     case CHANGE_NEW_POST_VALUE:
-      stateCopy.newPostValue = action.payload;
-      return stateCopy;
+      return {
+        ...state,
+        newPostValue: action.payload,
+      };
 
     default:
       return state;

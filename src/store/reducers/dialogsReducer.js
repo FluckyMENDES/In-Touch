@@ -1,5 +1,4 @@
 import { ADD_MESSAGE, CHANGE_NEW_MESSAGE_VALUE } from '../actionTypes';
-import { cloneDeepWith } from 'lodash';
 
 const initialState = {
   newMessageValue: '',
@@ -55,7 +54,6 @@ const initialState = {
 };
 
 const dialogsReducer = (state = initialState, action) => {
-  let stateCopy = cloneDeepWith(state);
   switch (action.type) {
     case ADD_MESSAGE:
       const newMessage = {
@@ -66,14 +64,17 @@ const dialogsReducer = (state = initialState, action) => {
         isRead: false,
       };
 
-      stateCopy.messages.push(newMessage);
-      stateCopy.newMessageValue = '';
-
-      return stateCopy;
+      return {
+        ...state,
+        messages: [...state.messages, newMessage],
+        newMessageValue: '',
+      };
 
     case CHANGE_NEW_MESSAGE_VALUE:
-      stateCopy.newMessageValue = action.payload;
-      return stateCopy;
+      return {
+        ...state,
+        newMessageValue: action.payload,
+      };
 
     default:
       return state;
