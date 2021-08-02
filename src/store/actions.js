@@ -5,6 +5,7 @@ import {
   CHANGE_NEW_MESSAGE_VALUE,
   FOLLOW_USER,
   SET_USERS,
+  CHANGE_CURRENT_PAGE,
 } from './actionTypes';
 
 export const addPost = () => ({
@@ -33,4 +34,9 @@ export const followUser = (id) => ({
 export const setUsers = (users) => ({
   type: SET_USERS,
   payload: users,
+});
+
+export const changeCurrentPage = (pageNumber) => ({
+  type: CHANGE_CURRENT_PAGE,
+  payload: pageNumber,
 });

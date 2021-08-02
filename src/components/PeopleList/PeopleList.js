@@ -1,16 +1,25 @@
 import React, { useEffect } from 'react';
 import classes from './PeopleList.module.scss';
 import PeopleItem from './PeopleItem/PeopleItem';
+import Pagination from '../UI/Pagination/Pagination';
 import { connect } from 'react-redux';
-import { followUser, setUsers } from '../../store/actions';
+import { changeCurrentPage, followUser, setUsers } from '../../store/actions';
 import axios from './../../axios/axios';
 
-const PeopleList = ({ users, followUserHandler, setUsersHandler }) => {
+const PeopleList = ({
+  users,
+  pageSize,
+  currentPage,
+  totalUsersCount,
+  followUserHandler,
+  setUsersHandler,
+  changeCurrentPageHandler,
+}) => {
   useEffect(() => {
-    axios.get('/users').then((response) => {
-      setUsersHandler(response.data.items);
+    axios.get(`/users?page=${currentPage}&count=${pageSize}`).then((response) => {
+      setUsersHandler(response.data);
     });
-  }, [setUsersHandler]);
+  }, [setUsersHandler, currentPage, pageSize]);
 
   const renderItems = (items) =>
     items.map(
@@ -42,13 +51,22 @@ const PeopleList = ({ users, followUserHandler, setUsersHandler }) => {
 
   return (
     <div className={classes.PeopleList}>
-      <ul>{renderItems(users)}</ul>
+      <ul className={classes.list}>{renderItems(users)}</ul>
+      <Pagination
+        currentPage={currentPage}
+        pageSize={pageSize}
+        totalUsersCount={totalUsersCount}
+        onPaginationItemClick={changeCurrentPageHandler}
+      />
     </div>
   );
 };
 
 const mapStateToProps = (state) => ({
   users: state.usersPage.users,
+  pageSize: state.usersPage.pageSize,
+  totalUsersCount: state.usersPage.totalUsersCount,
+  currentPage: state.usersPage.currentPage,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -57,6 +75,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   setUsersHandler: (users) => {
     dispatch(setUsers(users));
+  },
+  changeCurrentPageHandler: (pageNumber) => {
+    dispatch(changeCurrentPage(pageNumber));
   },
 });
 

@@ -1,7 +1,10 @@
-import { FOLLOW_USER, SET_USERS } from '../actionTypes';
+import { CHANGE_CURRENT_PAGE, FOLLOW_USER, SET_USERS } from '../actionTypes';
 
 const initialState = {
   users: [],
+  pageSize: 20,
+  totalUsersCount: 200,
+  currentPage: 1,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -18,10 +21,15 @@ const usersReducer = (state = initialState, action) => {
         users: newUsers,
       };
     case SET_USERS:
-      console.log(state, action);
       return {
         ...state,
-        users: [...action.payload],
+        users: [...action.payload.items],
+        totalUsersCount: action.payload.totalCount,
+      };
+    case CHANGE_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
       };
     default:
       return state;

@@ -2,9 +2,14 @@
   display: inline-block;
   border-radius: 0.2em;
   padding: 0.5em 1em;
+  background-color: var(--color-gray-200);
   border: none;
   cursor: pointer;
   transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-gray-300);
+  }
 
   &.primary {
     background-color: var(--color-primary);
