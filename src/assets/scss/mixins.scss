@@ -4,3 +4,10 @@
   padding: 1.5rem;
   box-shadow: var(--box-shadow);
 }
+
+@mixin text-ellipsis {
+  display: block;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

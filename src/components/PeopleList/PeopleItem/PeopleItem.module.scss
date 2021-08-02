@@ -1,0 +1,35 @@
+@import './../../../assets/scss/mixins';
+
+.PeopleItem {
+  @include block;
+
+  display: grid;
+  grid-template-columns: 80px 5fr 3fr;
+  gap: 1rem;
+
+  & img {
+    margin-bottom: 1rem;
+  }
+
+  & .leftWrapper {
+  }
+
+  & .centerWrapper {
+    overflow: hidden;
+
+    & strong,
+    & p {
+      @include text-ellipsis;
+    }
+  }
+
+  & .rightWrapper {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+
+    & span {
+      @include text-ellipsis;
+    }
+  }
+}

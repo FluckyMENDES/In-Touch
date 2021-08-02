@@ -16,6 +16,11 @@ const Navbar = () => {
         exact: false,
       },
       {
+        path: '/users',
+        title: 'People',
+        exact: false,
+      },
+      {
         path: '/news',
         title: 'News',
         exact: false,
