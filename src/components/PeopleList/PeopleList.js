@@ -3,73 +3,42 @@ import classes from './PeopleList.module.scss';
 import PeopleItem from './PeopleItem/PeopleItem';
 import { connect } from 'react-redux';
 import { followUser, setUsers } from '../../store/actions';
+import axios from './../../axios/axios';
 
 const PeopleList = ({ users, followUserHandler, setUsersHandler }) => {
   useEffect(() => {
-    setUsersHandler([
-      {
-        id: 1,
-        username: {
-          firstName: 'Oleg',
-          lastName: 'Kireev',
-          login: 'flucky',
-        },
-        region: {
-          country: 'Russia',
-          city: 'Moscow',
-        },
-        status: 'Lorem ipsum dolor eves',
-        isFollowed: false,
-      },
-      {
-        id: 2,
-        username: {
-          firstName: 'Ivan',
-          lastName: 'Ivanyan',
-          login: 'policeman',
-        },
-        region: {
-          country: 'Russia',
-          city: 'Moscow',
-        },
-        status: 'Lorem ipsum',
-        isFollowed: false,
-      },
-      {
-        id: 3,
-        username: {
-          firstName: 'Bruce',
-          lastName: 'Wayne',
-          login: 'Notbatman',
-        },
-        region: {
-          country: 'USA',
-          city: 'Gotham City',
-        },
-        status: 'Why do you wanna kill me?',
-        isFollowed: true,
-      },
-    ]);
+    axios.get('/users').then((response) => {
+      setUsersHandler(response.data.items);
+    });
   }, [setUsersHandler]);
 
   const renderItems = (items) =>
-    items.map(({ username, status, region, isFollowed, id }) => {
-      const { firstName, lastName } = username;
-      const { country, city } = region;
-      return (
-        <PeopleItem
-          key={id}
-          id={id}
-          firstName={firstName}
-          lastName={lastName}
-          country={country}
-          city={city}
-          status={status}
-          isFollowed={isFollowed}
-          followUserHandler={followUserHandler}
-        />
-      );
-    });
+    items.map(
+      ({
+        name,
+        status,
+        location = { country: 'Russia', city: 'Moscow' },
+        followed,
+        photos,
+        id,
+      }) => {
+        const { country, city } = location;
+        const img = photos.small;
+        return (
+          <PeopleItem
+            key={id}
+            id={id}
+            name={name}
+            country={country}
+            city={city}
+            status={status}
+            img={img}
+            followed={followed}
+            followUserHandler={followUserHandler}
+          />
+        );
+      }
+    );
 
   return (
     <div className={classes.PeopleList}>

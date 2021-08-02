@@ -3,34 +3,24 @@ import classes from './PeopleItem.module.scss';
 import Avatar from '../../UI/Avatar/Avatar';
 import Button from '../../UI/Button/Button';
 
-const PeopleItem = ({
-  id,
-  firstName,
-  lastName,
-  status,
-  city,
-  country,
-  isFollowed,
-  followUserHandler,
-}) => {
-  const fullName = `${firstName} ${lastName}`;
+const PeopleItem = ({ id, name, status, city, country, img, followed, followUserHandler }) => {
   const buttonEl = (
     <Button
-      kind={isFollowed ? '' : 'primary'}
+      kind={followed ? '' : 'primary'}
       type="button"
       onClick={followUserHandler.bind(this, id)}
       wide>
-      {isFollowed ? 'Unfollow' : 'Follow'}
+      {followed ? 'Unfollow' : 'Follow'}
     </Button>
   );
   return (
     <li className={classes.PeopleItem}>
       <div className={classes.leftWrapper}>
-        <Avatar name={fullName} />
+        <Avatar name={name} img={img} />
         {buttonEl}
       </div>
       <div className={classes.centerWrapper}>
-        <strong>{fullName}</strong>
+        <strong>{name}</strong>
         <p>{status}</p>
       </div>
       <div className={classes.rightWrapper}>

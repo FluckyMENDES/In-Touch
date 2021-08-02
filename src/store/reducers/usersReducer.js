@@ -10,7 +10,7 @@ const usersReducer = (state = initialState, action) => {
       const users = state.users;
       const user = users.find((user) => user.id === action.payload);
       const userIndex = users.indexOf(user);
-      user.isFollowed = !user.isFollowed;
+      user.followed = !user.followed;
       const newUsers = [...users.slice(0, userIndex), user, ...users.slice(userIndex + 1)];
 
       return {
@@ -18,6 +18,7 @@ const usersReducer = (state = initialState, action) => {
         users: newUsers,
       };
     case SET_USERS:
+      console.log(state, action);
       return {
         ...state,
         users: [...action.payload],
