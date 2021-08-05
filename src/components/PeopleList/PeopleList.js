@@ -1,26 +1,16 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import classes from './PeopleList.module.scss';
 import PeopleItem from './PeopleItem/PeopleItem';
 import Pagination from '../UI/Pagination/Pagination';
-import { connect } from 'react-redux';
-import { changeCurrentPage, followUser, setUsers } from '../../store/actions';
-import axios from './../../axios/axios';
 
 const PeopleList = ({
   users,
-  pageSize,
   currentPage,
+  pageSize,
   totalUsersCount,
-  followUserHandler,
-  setUsersHandler,
   changeCurrentPageHandler,
+  followUserHandler,
 }) => {
-  useEffect(() => {
-    axios.get(`/users?page=${currentPage}&count=${pageSize}`).then((response) => {
-      setUsersHandler(response.data);
-    });
-  }, [setUsersHandler, currentPage, pageSize]);
-
   const renderItems = (items) =>
     items.map(
       ({
@@ -62,23 +52,4 @@ const PeopleList = ({
   );
 };
 
-const mapStateToProps = (state) => ({
-  users: state.usersPage.users,
-  pageSize: state.usersPage.pageSize,
-  totalUsersCount: state.usersPage.totalUsersCount,
-  currentPage: state.usersPage.currentPage,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  followUserHandler: (id) => {
-    dispatch(followUser(id));
-  },
-  setUsersHandler: (users) => {
-    dispatch(setUsers(users));
-  },
-  changeCurrentPageHandler: (pageNumber) => {
-    dispatch(changeCurrentPage(pageNumber));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PeopleList);
+export default PeopleList;
