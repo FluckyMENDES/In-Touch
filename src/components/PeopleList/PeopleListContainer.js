@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { changeCurrentPage, followUser, setUsers } from '../../store/actions';
+import { changeCurrentPage, followUser, setUsers, toggleUsersIsLoading } from '../../store/actions';
 import axios from '../../axios/axios';
+import Preloader from '../UI/Preloader/Preloader';
 import PeopleList from './PeopleList';
 
 const PeopleListContainer = ({
@@ -9,25 +10,35 @@ const PeopleListContainer = ({
   pageSize,
   currentPage,
   totalUsersCount,
-  followUserHandler,
-  setUsersHandler,
-  changeCurrentPageHandler,
+  isLoading,
+  toggleUsersIsLoading,
+  followUser,
+  setUsers,
+  changeCurrentPage,
 }) => {
   useEffect(() => {
+    toggleUsersIsLoading(true);
     axios.get(`/users?page=${currentPage}&count=${pageSize}`).then((response) => {
-      setUsersHandler(response.data);
+      toggleUsersIsLoading(false);
+      setUsers(response.data);
     });
-  }, [setUsersHandler, currentPage, pageSize]);
+  }, [setUsers, currentPage, pageSize, toggleUsersIsLoading]);
 
   return (
-    <PeopleList
-      users={users}
-      currentPage={currentPage}
-      pageSize={pageSize}
-      totalUsersCount={totalUsersCount}
-      changeCurrentPageHandler={changeCurrentPageHandler}
-      followUserHandler={followUserHandler}
-    />
+    <>
+      {isLoading ? (
+        <Preloader />
+      ) : (
+        <PeopleList
+          users={users}
+          currentPage={currentPage}
+          pageSize={pageSize}
+          totalUsersCount={totalUsersCount}
+          changeCurrentPageHandler={changeCurrentPage}
+          followUserHandler={followUser}
+        />
+      )}
+    </>
   );
 };
 
@@ -36,18 +47,12 @@ const mapStateToProps = (state) => ({
   pageSize: state.usersPage.pageSize,
   totalUsersCount: state.usersPage.totalUsersCount,
   currentPage: state.usersPage.currentPage,
+  isLoading: state.usersPage.isLoading,
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  followUserHandler: (id) => {
-    dispatch(followUser(id));
-  },
-  setUsersHandler: (users) => {
-    dispatch(setUsers(users));
-  },
-  changeCurrentPageHandler: (pageNumber) => {
-    dispatch(changeCurrentPage(pageNumber));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(PeopleListContainer);
+export default connect(mapStateToProps, {
+  followUser,
+  setUsers,
+  changeCurrentPage,
+  toggleUsersIsLoading,
+})(PeopleListContainer);

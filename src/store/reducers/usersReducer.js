@@ -1,10 +1,16 @@
-import { CHANGE_CURRENT_PAGE, FOLLOW_USER, SET_USERS } from '../actionTypes';
+import {
+  CHANGE_CURRENT_PAGE,
+  FOLLOW_USER,
+  SET_USERS,
+  TOGGLE_USERS_IS_LOADING,
+} from '../actionTypes';
 
 const initialState = {
   users: [],
   pageSize: 20,
   totalUsersCount: 200,
   currentPage: 1,
+  isLoading: false,
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -30,6 +36,11 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         currentPage: action.payload,
+      };
+    case TOGGLE_USERS_IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
       };
     default:
       return state;

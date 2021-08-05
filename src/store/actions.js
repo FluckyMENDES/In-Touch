@@ -6,6 +6,7 @@ import {
   FOLLOW_USER,
   SET_USERS,
   CHANGE_CURRENT_PAGE,
+  TOGGLE_USERS_IS_LOADING,
 } from './actionTypes';
 
 export const addPost = () => ({
@@ -39,4 +40,9 @@ export const setUsers = (users) => ({
 export const changeCurrentPage = (pageNumber) => ({
   type: CHANGE_CURRENT_PAGE,
   payload: pageNumber,
+});
+
+export const toggleUsersIsLoading = (isLoading) => ({
+  type: TOGGLE_USERS_IS_LOADING,
+  payload: isLoading,
 });
