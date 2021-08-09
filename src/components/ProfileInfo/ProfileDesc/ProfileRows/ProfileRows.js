@@ -2,12 +2,9 @@ import React from 'react';
 import classes from './ProfileRows.module.scss';
 
 const ProfileRows = ({ profile }) => {
-  console.log(profile);
-
   const renderContacts = (contacts) =>
     Object.keys(contacts).map((key, index) => {
       const link = contacts[key];
-      console.log(link);
       if (!link) return null;
       return (
         <div key={`${key}-${index}`}>
