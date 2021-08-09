@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './PeopleItem.module.scss';
 import Avatar from '../../UI/Avatar/Avatar';
 import Button from '../../UI/Button/Button';
+import { Link } from 'react-router-dom';
 
 const PeopleItem = ({ id, name, status, city, country, img, followed, followUserHandler }) => {
   const buttonEl = (
@@ -16,7 +17,9 @@ const PeopleItem = ({ id, name, status, city, country, img, followed, followUser
   return (
     <li className={classes.PeopleItem}>
       <div className={classes.leftWrapper}>
-        <Avatar name={name} img={img} />
+        <Link to={`/profile/${id}`}>
+          <Avatar name={name} img={img} />
+        </Link>
         {buttonEl}
       </div>
       <div className={classes.centerWrapper}>

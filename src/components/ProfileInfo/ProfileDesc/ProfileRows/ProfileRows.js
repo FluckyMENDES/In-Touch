@@ -1,31 +1,30 @@
 import React from 'react';
 import classes from './ProfileRows.module.scss';
 
-const ProfileRows = ({ user }) => {
-  const { dateOfBirth, city, education, website } = user.props;
+const ProfileRows = ({ profile }) => {
+  console.log(profile);
+
+  const renderContacts = (contacts) =>
+    Object.keys(contacts).map((key, index) => {
+      const link = contacts[key];
+      console.log(link);
+      if (!link) return null;
+      return (
+        <div key={`${key}-${index}`}>
+          <span>{key}:</span>
+          <span>
+            <a href={link} target="_blank" rel="noreferrer">
+              {link}
+            </a>
+          </span>
+        </div>
+      );
+    });
 
   return (
     <div className={classes.ProfileRows}>
-      <div>
-        <span>Birthday:</span>
-        <span>{dateOfBirth}</span>
-      </div>
-      <div>
-        <span>City:</span>
-        <span>{city}</span>
-      </div>
-      <div>
-        <span>Education:</span>
-        <span>{education}</span>
-      </div>
-      <div>
-        <span>Website:</span>
-        <span>
-          <a href={website} target="_blank" rel="noreferrer">
-            {website}
-          </a>
-        </span>
-      </div>
+      <p>{profile.aboutMe}</p>
+      {renderContacts(profile.contacts)}
     </div>
   );
 };

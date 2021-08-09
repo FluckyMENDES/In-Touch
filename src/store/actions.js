@@ -7,7 +7,15 @@ import {
   SET_USERS,
   CHANGE_CURRENT_PAGE,
   TOGGLE_USERS_IS_LOADING,
+  SET_USER_PROFILE,
 } from './actionTypes';
+
+export const setUserProfile = (currentUserProfile) => {
+  return {
+    type: SET_USER_PROFILE,
+    payload: currentUserProfile,
+  };
+};
 
 export const addPost = () => ({
   type: ADD_POST,

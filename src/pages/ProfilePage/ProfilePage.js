@@ -2,10 +2,10 @@ import React from 'react';
 import ProfileInfo from './../../components/ProfileInfo/ProfileInfo';
 import Posts from './../../components/Posts/Posts';
 
-const ProfilePage = () => {
+const ProfilePage = ({ profile }) => {
   return (
     <>
-      <ProfileInfo />
+      <ProfileInfo profile={profile} />
       <Posts />
     </>
   );

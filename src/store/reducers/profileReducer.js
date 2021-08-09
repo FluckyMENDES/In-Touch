@@ -1,8 +1,9 @@
-import { ADD_POST, CHANGE_NEW_POST_VALUE } from '../actionTypes';
+import { ADD_POST, CHANGE_NEW_POST_VALUE, SET_USER_PROFILE } from '../actionTypes';
 import profileAvatar from '../../assets/img/mock-profile-avatar.jpg';
 
 const initialState = {
   newPostValue: '',
+  currentUserProfile: null,
   posts: [
     {
       id: 1,
@@ -30,6 +31,11 @@ const initialState = {
 
 const profileReducer = (state = initialState, action) => {
   switch (action.type) {
+    case SET_USER_PROFILE:
+      return {
+        ...state,
+        currentUserProfile: action.payload,
+      };
     case ADD_POST:
       const newPost = {
         id: state.posts.length + 1,

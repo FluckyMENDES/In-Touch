@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import Layout from './hoc/Layout/Layout';
-import ProfilePage from './pages/ProfilePage/ProfilePage';
+import ProfilePage from './pages/ProfilePage/ProfilePageContainer';
 import DialogsPage from './pages/DialogsPage/DialogsPage';
 import NewsPage from './pages/NewsPage/NewsPage';
 import MusicPage from './pages/MusicPage/MusicPage';
@@ -21,6 +21,7 @@ function App() {
           <Route path="/users" component={PeoplePage} />
           <Route path="/dialogs/:id" component={DialogsPage} />
           <Route path="/dialogs" component={DialogsPage} />
+          <Route path="/profile/:id" component={ProfilePage} />
           <Route path="/" exact component={ProfilePage} />
         </Switch>
       </Layout>
