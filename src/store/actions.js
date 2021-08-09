@@ -8,6 +8,7 @@ import {
   CHANGE_CURRENT_PAGE,
   TOGGLE_USERS_IS_LOADING,
   SET_USER_PROFILE,
+  SET_AUTH_USER_DATA,
 } from './actionTypes';
 
 export const setUserProfile = (currentUserProfile) => {
@@ -53,4 +54,9 @@ export const changeCurrentPage = (pageNumber) => ({
 export const toggleUsersIsLoading = (isLoading) => ({
   type: TOGGLE_USERS_IS_LOADING,
   payload: isLoading,
+});
+
+export const setAuthUserData = (id, email, login) => ({
+  type: SET_AUTH_USER_DATA,
+  payload: { id, email, login },
 });
