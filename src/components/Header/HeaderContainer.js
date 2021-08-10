@@ -6,7 +6,7 @@ import { setAuthUserData } from '../../store/actions';
 
 const HeaderContainer = (props) => {
   useEffect(() => {
-    axios.get(`/auth/me`, { withCredentials: true }).then((response) => {
+    axios.get(`/auth/me`).then((response) => {
       const { id, email, login } = response.data.data;
 
       if (response.data.resultCode === 0) {

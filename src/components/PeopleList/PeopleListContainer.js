@@ -7,9 +7,9 @@ import {
   setUsers,
   toggleUsersIsLoading,
 } from '../../store/actions';
-import axios from '../../axios/axios';
 import Preloader from '../UI/Preloader/Preloader';
 import PeopleList from './PeopleList';
+import usersAPI from '../../api/users';
 
 const PeopleListContainer = ({
   users,
@@ -25,17 +25,10 @@ const PeopleListContainer = ({
 }) => {
   useEffect(() => {
     toggleUsersIsLoading(true);
-    axios
-      .get(`/users?page=${currentPage}&count=${pageSize}`, {
-        withCredentials: true,
-        headers: {
-          'API-KEY': '397d99d8-a6d4-4c8e-a265-ff34f82ec660',
-        },
-      })
-      .then((response) => {
-        toggleUsersIsLoading(false);
-        setUsers(response.data);
-      });
+    usersAPI.getUsers(currentPage, pageSize).then((data) => {
+      toggleUsersIsLoading(false);
+      setUsers(data);
+    });
   }, [setUsers, currentPage, pageSize, toggleUsersIsLoading]);
 
   return (
