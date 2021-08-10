@@ -10,6 +10,7 @@ import {
   TOGGLE_USERS_IS_LOADING,
   SET_USER_PROFILE,
   SET_AUTH_USER_DATA,
+  TOGGLE_FOLLOWING_IN_PROGRESS,
 } from './actionTypes';
 
 export const setUserProfile = (currentUserProfile) => {
@@ -60,6 +61,14 @@ export const changeCurrentPage = (pageNumber) => ({
 export const toggleUsersIsLoading = (isLoading) => ({
   type: TOGGLE_USERS_IS_LOADING,
   payload: isLoading,
+});
+
+export const toggleFollowingInProgress = (isLoading, userId) => ({
+  type: TOGGLE_FOLLOWING_IN_PROGRESS,
+  payload: {
+    isLoading,
+    userId,
+  },
 });
 
 export const setAuthUserData = (id, email, login) => ({

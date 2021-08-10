@@ -16,7 +16,7 @@ const Button = ({
   wide && cls.push(classes.wide);
 
   return (
-    <button className={cls.join(' ')} type={type} onClick={onClick}>
+    <button className={cls.join(' ')} disabled={disabled} type={type} onClick={onClick}>
       {children}
     </button>
   );

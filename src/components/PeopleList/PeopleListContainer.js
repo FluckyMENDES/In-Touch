@@ -6,6 +6,7 @@ import {
   unfollowUser,
   setUsers,
   toggleUsersIsLoading,
+  toggleFollowingInProgress,
 } from '../../store/actions';
 import Preloader from '../UI/Preloader/Preloader';
 import PeopleList from './PeopleList';
@@ -22,6 +23,8 @@ const PeopleListContainer = ({
   unfollowUser,
   setUsers,
   changeCurrentPage,
+  toggleFollowingInProgress,
+  followingInProgress,
 }) => {
   useEffect(() => {
     toggleUsersIsLoading(true);
@@ -44,6 +47,8 @@ const PeopleListContainer = ({
           changeCurrentPageHandler={changeCurrentPage}
           followUserHandler={followUser}
           unfollowUserHandler={unfollowUser}
+          followingInProgress={followingInProgress}
+          toggleFollowingInProgress={toggleFollowingInProgress}
         />
       )}
     </>
@@ -56,6 +61,7 @@ const mapStateToProps = (state) => ({
   totalUsersCount: state.usersPage.totalUsersCount,
   currentPage: state.usersPage.currentPage,
   isLoading: state.usersPage.isLoading,
+  followingInProgress: state.usersPage.followingInProgress,
 });
 
 export default connect(mapStateToProps, {
@@ -64,4 +70,5 @@ export default connect(mapStateToProps, {
   setUsers,
   changeCurrentPage,
   toggleUsersIsLoading,
+  toggleFollowingInProgress,
 })(PeopleListContainer);

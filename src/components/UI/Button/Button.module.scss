@@ -28,4 +28,12 @@
   &.wide {
     width: 100%;
   }
+
+  &[disabled],
+  &[disabled]:hover,
+  &[disabled]:focus-visible,
+  &[disabled]:active {
+    background-color: var(--color-gray-300);
+    cursor: not-allowed;
+  }
 }

@@ -11,6 +11,8 @@ const PeopleList = ({
   changeCurrentPageHandler,
   followUserHandler,
   unfollowUserHandler,
+  followingInProgress,
+  toggleFollowingInProgress,
 }) => {
   const renderItems = (items) =>
     items.map(
@@ -36,6 +38,8 @@ const PeopleList = ({
             followed={followed}
             followUserHandler={followUserHandler}
             unfollowUserHandler={unfollowUserHandler}
+            followingInProgress={followingInProgress}
+            toggleFollowingInProgress={toggleFollowingInProgress}
           />
         );
       }

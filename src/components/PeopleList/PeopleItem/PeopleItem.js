@@ -3,7 +3,7 @@ import classes from './PeopleItem.module.scss';
 import Avatar from '../../UI/Avatar/Avatar';
 import Button from '../../UI/Button/Button';
 import { Link } from 'react-router-dom';
-import axios from './../../../axios/axios';
+import followAPI from '../../../api/follow';
 
 const PeopleItem = ({
   id,
@@ -15,43 +15,44 @@ const PeopleItem = ({
   followed,
   followUserHandler,
   unfollowUserHandler,
+  followingInProgress,
+  toggleFollowingInProgress,
 }) => {
   const onFollowClick = (id) => {
-    axios
-      .post(`/follow/${id}`, null, {
-        withCredentials: true,
-        headers: {
-          'API-KEY': '397d99d8-a6d4-4c8e-a265-ff34f82ec660',
-        },
-      })
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          followUserHandler(id);
-        }
-      });
+    toggleFollowingInProgress(true, id);
+    followAPI.follow(id).then((response) => {
+      if (response.data.resultCode === 0) {
+        followUserHandler(id);
+      }
+      toggleFollowingInProgress(false, id);
+    });
   };
 
   const onUnfollowClick = (id) => {
-    axios
-      .delete(`/follow/${id}`, {
-        withCredentials: true,
-        headers: {
-          'API-KEY': '397d99d8-a6d4-4c8e-a265-ff34f82ec660',
-        },
-      })
-      .then((response) => {
-        if (response.data.resultCode === 0) {
-          unfollowUserHandler(id);
-        }
-      });
+    toggleFollowingInProgress(true, id);
+    followAPI.unfollow(id).then((response) => {
+      if (response.data.resultCode === 0) {
+        unfollowUserHandler(id);
+      }
+      toggleFollowingInProgress(false, id);
+    });
   };
 
   const buttonEl = followed ? (
-    <Button type="button" onClick={onUnfollowClick.bind(null, id)} wide>
+    <Button
+      disabled={followingInProgress.some((userId) => userId === id)}
+      type="button"
+      onClick={onUnfollowClick.bind(null, id)}
+      wide>
       Unfollow
     </Button>
   ) : (
-    <Button kind="primary" type="button" onClick={onFollowClick.bind(null, id)} wide>
+    <Button
+      disabled={followingInProgress.some((userId) => userId === id)}
+      kind="primary"
+      type="button"
+      onClick={onFollowClick.bind(null, id)}
+      wide>
       Follow
     </Button>
   );

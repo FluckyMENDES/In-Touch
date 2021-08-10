@@ -4,6 +4,7 @@ import {
   UNFOLLOW_USER,
   SET_USERS,
   TOGGLE_USERS_IS_LOADING,
+  TOGGLE_FOLLOWING_IN_PROGRESS,
 } from '../actionTypes';
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   totalUsersCount: 200,
   currentPage: 1,
   isLoading: false,
+  followingInProgress: [2, 3],
 };
 
 const usersReducer = (state = initialState, action) => {
@@ -54,6 +56,13 @@ const usersReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: action.payload,
+      };
+    case TOGGLE_FOLLOWING_IN_PROGRESS:
+      return {
+        ...state,
+        followingInProgress: action.payload.isLoading
+          ? [...state.followingInProgress, action.payload.userId]
+          : state.followingInProgress.filter((id) => id !== action.payload.userId),
       };
     default:
       return state;
