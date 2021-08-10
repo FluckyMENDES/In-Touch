@@ -10,6 +10,7 @@ const PeopleList = ({
   totalUsersCount,
   changeCurrentPageHandler,
   followUserHandler,
+  unfollowUserHandler,
 }) => {
   const renderItems = (items) =>
     items.map(
@@ -34,6 +35,7 @@ const PeopleList = ({
             img={img}
             followed={followed}
             followUserHandler={followUserHandler}
+            unfollowUserHandler={unfollowUserHandler}
           />
         );
       }

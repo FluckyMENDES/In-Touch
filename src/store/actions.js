@@ -4,6 +4,7 @@ import {
   ADD_MESSAGE,
   CHANGE_NEW_MESSAGE_VALUE,
   FOLLOW_USER,
+  UNFOLLOW_USER,
   SET_USERS,
   CHANGE_CURRENT_PAGE,
   TOGGLE_USERS_IS_LOADING,
@@ -38,6 +39,11 @@ export const changeNewMessageValue = (value) => ({
 
 export const followUser = (id) => ({
   type: FOLLOW_USER,
+  payload: id,
+});
+
+export const unfollowUser = (id) => ({
+  type: UNFOLLOW_USER,
   payload: id,
 });
 

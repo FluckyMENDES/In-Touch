@@ -1,6 +1,12 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { changeCurrentPage, followUser, setUsers, toggleUsersIsLoading } from '../../store/actions';
+import {
+  changeCurrentPage,
+  followUser,
+  unfollowUser,
+  setUsers,
+  toggleUsersIsLoading,
+} from '../../store/actions';
 import axios from '../../axios/axios';
 import Preloader from '../UI/Preloader/Preloader';
 import PeopleList from './PeopleList';
@@ -13,15 +19,23 @@ const PeopleListContainer = ({
   isLoading,
   toggleUsersIsLoading,
   followUser,
+  unfollowUser,
   setUsers,
   changeCurrentPage,
 }) => {
   useEffect(() => {
     toggleUsersIsLoading(true);
-    axios.get(`/users?page=${currentPage}&count=${pageSize}`).then((response) => {
-      toggleUsersIsLoading(false);
-      setUsers(response.data);
-    });
+    axios
+      .get(`/users?page=${currentPage}&count=${pageSize}`, {
+        withCredentials: true,
+        headers: {
+          'API-KEY': '397d99d8-a6d4-4c8e-a265-ff34f82ec660',
+        },
+      })
+      .then((response) => {
+        toggleUsersIsLoading(false);
+        setUsers(response.data);
+      });
   }, [setUsers, currentPage, pageSize, toggleUsersIsLoading]);
 
   return (
@@ -36,6 +50,7 @@ const PeopleListContainer = ({
           totalUsersCount={totalUsersCount}
           changeCurrentPageHandler={changeCurrentPage}
           followUserHandler={followUser}
+          unfollowUserHandler={unfollowUser}
         />
       )}
     </>
@@ -52,6 +67,7 @@ const mapStateToProps = (state) => ({
 
 export default connect(mapStateToProps, {
   followUser,
+  unfollowUser,
   setUsers,
   changeCurrentPage,
   toggleUsersIsLoading,

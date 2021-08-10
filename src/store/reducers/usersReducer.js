@@ -1,6 +1,7 @@
 import {
   CHANGE_CURRENT_PAGE,
   FOLLOW_USER,
+  UNFOLLOW_USER,
   SET_USERS,
   TOGGLE_USERS_IS_LOADING,
 } from '../actionTypes';
@@ -19,13 +20,25 @@ const usersReducer = (state = initialState, action) => {
       const users = state.users;
       const user = users.find((user) => user.id === action.payload);
       const userIndex = users.indexOf(user);
-      user.followed = !user.followed;
+      user.followed = true;
       const newUsers = [...users.slice(0, userIndex), user, ...users.slice(userIndex + 1)];
 
       return {
         ...state,
         users: newUsers,
       };
+    case UNFOLLOW_USER: {
+      const users = state.users;
+      const user = users.find((user) => user.id === action.payload);
+      const userIndex = users.indexOf(user);
+      user.followed = false;
+      const newUsers = [...users.slice(0, userIndex), user, ...users.slice(userIndex + 1)];
+
+      return {
+        ...state,
+        users: newUsers,
+      };
+    }
     case SET_USERS:
       return {
         ...state,
