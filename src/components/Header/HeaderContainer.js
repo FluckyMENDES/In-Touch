@@ -2,7 +2,7 @@ import axios from './../../axios/axios';
 import React, { useEffect } from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { setAuthUserData } from '../../store/actions';
+import { setAuthUserData } from '../../store/actions/auth';
 
 const HeaderContainer = (props) => {
   useEffect(() => {

@@ -12,6 +12,22 @@ const usersAPI = {
       .get(`/users?page=${currentPage}&count=${pageSize}`)
       .then((response) => response.data);
   },
+  /**
+   * Добавляет пользователя в друзья
+   * @param {number} userId - Идентифкатор пользователя
+   * @returns {Promise} Promise запроса на сервер
+   */
+  follow(userId) {
+    return axios.post(`/follow/${userId}`);
+  },
+  /**
+   * Удаляет пользователя из друзей
+   * @param {number} userId - Идентифкатор пользователя
+   * @returns {Promise} Promise запроса на сервер
+   */
+  unfollow(userId) {
+    return axios.delete(`/follow/${userId}`);
+  },
 };
 
 export default usersAPI;

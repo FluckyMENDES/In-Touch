@@ -9,10 +9,9 @@ const PeopleList = ({
   pageSize,
   totalUsersCount,
   changeCurrentPageHandler,
-  followUserHandler,
-  unfollowUserHandler,
+  follow,
+  unfollow,
   followingInProgress,
-  toggleFollowingInProgress,
 }) => {
   const renderItems = (items) =>
     items.map(
@@ -36,10 +35,9 @@ const PeopleList = ({
             status={status}
             img={img}
             followed={followed}
-            followUserHandler={followUserHandler}
-            unfollowUserHandler={unfollowUserHandler}
+            follow={follow}
+            unfollow={unfollow}
             followingInProgress={followingInProgress}
-            toggleFollowingInProgress={toggleFollowingInProgress}
           />
         );
       }

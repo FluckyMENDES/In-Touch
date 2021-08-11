@@ -1,16 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import {
-  changeCurrentPage,
-  followUser,
-  unfollowUser,
-  setUsers,
-  toggleUsersIsLoading,
-  toggleFollowingInProgress,
-} from '../../store/actions';
+import { changeCurrentPage } from '../../store/actions/users';
 import Preloader from '../UI/Preloader/Preloader';
 import PeopleList from './PeopleList';
-import usersAPI from '../../api/users';
+import { getUsers, follow, unfollow } from './../../store/reducers/usersReducer';
 
 const PeopleListContainer = ({
   users,
@@ -18,21 +11,17 @@ const PeopleListContainer = ({
   currentPage,
   totalUsersCount,
   isLoading,
-  toggleUsersIsLoading,
-  followUser,
-  unfollowUser,
-  setUsers,
+
   changeCurrentPage,
   toggleFollowingInProgress,
   followingInProgress,
+  getUsers,
+  follow,
+  unfollow,
 }) => {
   useEffect(() => {
-    toggleUsersIsLoading(true);
-    usersAPI.getUsers(currentPage, pageSize).then((data) => {
-      toggleUsersIsLoading(false);
-      setUsers(data);
-    });
-  }, [setUsers, currentPage, pageSize, toggleUsersIsLoading]);
+    getUsers(currentPage, pageSize);
+  }, [getUsers, currentPage, pageSize]);
 
   return (
     <>
@@ -45,8 +34,8 @@ const PeopleListContainer = ({
           pageSize={pageSize}
           totalUsersCount={totalUsersCount}
           changeCurrentPageHandler={changeCurrentPage}
-          followUserHandler={followUser}
-          unfollowUserHandler={unfollowUser}
+          follow={follow}
+          unfollow={unfollow}
           followingInProgress={followingInProgress}
           toggleFollowingInProgress={toggleFollowingInProgress}
         />
@@ -65,10 +54,8 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  followUser,
-  unfollowUser,
-  setUsers,
   changeCurrentPage,
-  toggleUsersIsLoading,
-  toggleFollowingInProgress,
+  getUsers,
+  follow,
+  unfollow,
 })(PeopleListContainer);

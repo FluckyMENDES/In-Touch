@@ -3,7 +3,7 @@ import classes from './Messages.module.scss';
 import Message from './Message/Message';
 import NewMessage from './NewMessage/NewMessage';
 import { connect } from 'react-redux';
-import { addMessage, changeNewMessageValue } from '../../store/actions';
+import { addMessage, changeNewMessageValue } from '../../store/actions/dialogs';
 
 const Messages = ({
   messages,

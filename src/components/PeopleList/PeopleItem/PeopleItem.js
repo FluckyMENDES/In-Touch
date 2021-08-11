@@ -3,7 +3,6 @@ import classes from './PeopleItem.module.scss';
 import Avatar from '../../UI/Avatar/Avatar';
 import Button from '../../UI/Button/Button';
 import { Link } from 'react-router-dom';
-import followAPI from '../../../api/follow';
 
 const PeopleItem = ({
   id,
@@ -13,29 +12,16 @@ const PeopleItem = ({
   country,
   img,
   followed,
-  followUserHandler,
-  unfollowUserHandler,
+  follow,
+  unfollow,
   followingInProgress,
-  toggleFollowingInProgress,
 }) => {
   const onFollowClick = (id) => {
-    toggleFollowingInProgress(true, id);
-    followAPI.follow(id).then((response) => {
-      if (response.data.resultCode === 0) {
-        followUserHandler(id);
-      }
-      toggleFollowingInProgress(false, id);
-    });
+    follow(id);
   };
 
   const onUnfollowClick = (id) => {
-    toggleFollowingInProgress(true, id);
-    followAPI.unfollow(id).then((response) => {
-      if (response.data.resultCode === 0) {
-        unfollowUserHandler(id);
-      }
-      toggleFollowingInProgress(false, id);
-    });
+    unfollow(id);
   };
 
   const buttonEl = followed ? (
