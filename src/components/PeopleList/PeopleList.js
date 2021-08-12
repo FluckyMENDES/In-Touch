@@ -49,7 +49,7 @@ const PeopleList = ({
       <Pagination
         currentPage={currentPage}
         pageSize={pageSize}
-        totalUsersCount={totalUsersCount}
+        total={totalUsersCount}
         onPaginationItemClick={changeCurrentPage}
       />
     </div>
