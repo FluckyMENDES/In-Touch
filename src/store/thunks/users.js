@@ -21,7 +21,7 @@ export const follow = (id) => (dispatch) => {
     if (response.data.resultCode === 0) {
       dispatch(followSuccess(id));
     }
-    toggleFollowingInProgress(false, id);
+    dispatch(toggleFollowingInProgress(false, id));
   });
 };
 
@@ -31,6 +31,6 @@ export const unfollow = (id) => (dispatch) => {
     if (response.data.resultCode === 0) {
       dispatch(unfollowSuccess(id));
     }
-    toggleFollowingInProgress(false, id);
+    dispatch(toggleFollowingInProgress(false, id));
   });
 };
