@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './PeoplePage.module.scss';
-import PeopleList from '../../components/PeopleList/PeopleListContainer';
+import PeopleList from '../../containers/PeopleListContainer';
 
 const DialogsPage = () => {
   return (

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import ProfilePage from './ProfilePage';
+import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import { connect } from 'react-redux';
-import { setCurrentUser } from '../../store/thunks/profile';
+import { setCurrentUser } from '../store/thunks/profile';
 import { useParams } from 'react-router-dom';
 
 const ProfilePageContainer = (props) => {

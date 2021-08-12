@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './App.css';
 import Layout from './hoc/Layout/Layout';
-import ProfilePage from './pages/ProfilePage/ProfilePageContainer';
+import ProfilePage from './containers/ProfilePageContainer';
 import DialogsPage from './pages/DialogsPage/DialogsPage';
 import NewsPage from './pages/NewsPage/NewsPage';
 import MusicPage from './pages/MusicPage/MusicPage';

@@ -8,7 +8,7 @@ const PeopleList = ({
   currentPage,
   pageSize,
   totalUsersCount,
-  changeCurrentPageHandler,
+  changeCurrentPage,
   follow,
   unfollow,
   followingInProgress,
@@ -50,7 +50,7 @@ const PeopleList = ({
         currentPage={currentPage}
         pageSize={pageSize}
         totalUsersCount={totalUsersCount}
-        onPaginationItemClick={changeCurrentPageHandler}
+        onPaginationItemClick={changeCurrentPage}
       />
     </div>
   );
