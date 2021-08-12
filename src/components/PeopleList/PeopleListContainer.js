@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { changeCurrentPage } from '../../store/actions/users';
 import Preloader from '../UI/Preloader/Preloader';
 import PeopleList from './PeopleList';
-import { getUsers, follow, unfollow } from './../../store/reducers/usersReducer';
+import { getUsers, follow, unfollow } from './../../store/thunks/users';
 
 const PeopleListContainer = ({
   users,
