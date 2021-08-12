@@ -2,10 +2,10 @@ import React from 'react';
 import ProfileInfo from './../../components/ProfileInfo/ProfileInfo';
 import Posts from './../../components/Posts/Posts';
 
-const ProfilePage = ({ profile }) => {
+const ProfilePage = ({ profile, isLoading }) => {
   return (
     <>
-      <ProfileInfo profile={profile} />
+      <ProfileInfo profile={profile} isLoading={isLoading} />
       <Posts />
     </>
   );

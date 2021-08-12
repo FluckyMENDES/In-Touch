@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
 import ProfilePage from './ProfilePage';
 import { connect } from 'react-redux';
-import { setUserProfile } from '../../store/actions/profile';
+import { setCurrentUser } from '../../store/thunks/profile';
 import { useParams } from 'react-router-dom';
-import profileAPI from '../../api/profile';
 
 const ProfilePageContainer = (props) => {
   let { id } = useParams();
+  const { setCurrentUser } = props;
   if (!id) {
-    id = props.userId || 18871;
+    id = props.userId;
   }
+
   useEffect(() => {
-    profileAPI.getProfile(id).then((data) => {
-      props.setUserProfile(data);
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (id) {
+      setCurrentUser(id);
+    }
+  }, [setCurrentUser, id]);
 
   return <ProfilePage {...props} profile={props.currentUserProfile} />;
 };
@@ -24,7 +24,8 @@ const mapStateToProps = (state) => {
   return {
     currentUserProfile: state.profilePage.currentUserProfile,
     userId: state.auth.id,
+    isLoading: state.profilePage.isLoading,
   };
 };
 
-export default connect(mapStateToProps, { setUserProfile })(ProfilePageContainer);
+export default connect(mapStateToProps, { setCurrentUser })(ProfilePageContainer);

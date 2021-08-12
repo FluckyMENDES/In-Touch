@@ -4,8 +4,8 @@ import Avatar from '../UI/Avatar/Avatar';
 import ProfileDesc from './ProfileDesc/ProfileDesc';
 import Preloader from '../UI/Preloader/Preloader';
 
-const ProfileInfo = ({ profile }) => {
-  if (!profile) {
+const ProfileInfo = ({ profile, isLoading }) => {
+  if (isLoading) {
     return <Preloader />;
   }
 

@@ -1,9 +1,15 @@
-import { ADD_POST, CHANGE_NEW_POST_VALUE, SET_USER_PROFILE } from '../actionTypes';
+import {
+  ADD_POST,
+  CHANGE_NEW_POST_VALUE,
+  SET_USER_PROFILE,
+  SET_USER_PROFILE_IN_PROGRESS,
+} from '../actionTypes';
 import profileAvatar from '../../assets/img/mock-profile-avatar.jpg';
 
 const initialState = {
   newPostValue: '',
   currentUserProfile: null,
+  isLoading: true,
   posts: [
     {
       id: 1,
@@ -36,6 +42,13 @@ const profileReducer = (state = initialState, action) => {
         ...state,
         currentUserProfile: action.payload,
       };
+
+    case SET_USER_PROFILE_IN_PROGRESS: {
+      return {
+        ...state,
+        isLoading: action.payload,
+      };
+    }
     case ADD_POST:
       const newPost = {
         id: state.posts.length + 1,
