@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Layout from './hoc/Layout/Layout';
 import ProfilePage from './pages/ProfilePage/ProfilePageContainer';
@@ -9,8 +9,13 @@ import PeoplePage from './pages/PeoplePage/PeoplePage';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { authUser } from './store/thunks/auth';
 
-function App() {
+function App({ authUser }) {
+  useEffect(() => {
+    authUser();
+  }, [authUser]);
+
   return (
     <div className="App container">
       <Layout>
@@ -29,4 +34,4 @@ function App() {
   );
 }
 
-export default connect()(App);
+export default connect(null, { authUser })(App);
