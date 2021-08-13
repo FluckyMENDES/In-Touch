@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './SettingsPage.module.scss';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 const SettingsPage = () => {
   return (
@@ -9,4 +10,4 @@ const SettingsPage = () => {
   );
 };
 
-export default SettingsPage;
+export default withAuthRedirect(SettingsPage);

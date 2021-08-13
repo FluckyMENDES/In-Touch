@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './NewsPage.module.scss';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 const NewsPage = () => {
   return (
@@ -9,4 +10,4 @@ const NewsPage = () => {
   );
 };
 
-export default NewsPage;
+export default withAuthRedirect(NewsPage);

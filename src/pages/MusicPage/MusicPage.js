@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './MusicPage.module.scss';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 const MusicPage = () => {
   return (
@@ -9,4 +10,4 @@ const MusicPage = () => {
   );
 };
 
-export default MusicPage;
+export default withAuthRedirect(MusicPage);

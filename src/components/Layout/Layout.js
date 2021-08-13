@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './Layout.module.scss';
 import Header from '../../containers/HeaderContainer';
-import Aside from '../../components/Aside/Aside';
+import Aside from '../Aside/Aside';
 
 const Layout = ({ children }) => (
   <div className={classes.Layout}>

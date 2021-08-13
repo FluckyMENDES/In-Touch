@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './DialogsPage.module.scss';
 import Dialogs from './../../components/Dialogs/Dialogs';
 import Messages from '../../components/Messages/Messages';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 const DialogsPage = () => {
   return (
@@ -12,4 +13,4 @@ const DialogsPage = () => {
   );
 };
 
-export default DialogsPage;
+export default withAuthRedirect(DialogsPage);
