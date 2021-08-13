@@ -20,12 +20,7 @@ const ProfileRows = ({ profile }) => {
       );
     });
 
-  return (
-    <div className={classes.ProfileRows}>
-      <p>{profile.aboutMe}</p>
-      {renderContacts(profile.contacts)}
-    </div>
-  );
+  return <div className={classes.ProfileRows}>{renderContacts(profile.contacts)}</div>;
 };
 
 export default ProfileRows;
