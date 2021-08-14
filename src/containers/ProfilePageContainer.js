@@ -1,31 +1,38 @@
 import React, { useEffect } from 'react';
 import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import { connect } from 'react-redux';
-import { setCurrentUser } from '../store/thunks/profile';
+import { getUserProfile, getUserStatus, updateUserStatus } from '../store/thunks/profile';
 import { useParams } from 'react-router-dom';
 
 const ProfilePageContainer = (props) => {
   let { id } = useParams();
-  const { setCurrentUser } = props;
+  const { getUserProfile, getUserStatus } = props;
+
   if (!id) {
     id = props.userId;
   }
 
   useEffect(() => {
     if (id) {
-      setCurrentUser(id);
+      getUserProfile(id);
+      getUserStatus(id);
     }
-  }, [setCurrentUser, id]);
+  }, [getUserStatus, getUserProfile, id]);
 
-  return <ProfilePage {...props} profile={props.currentUserProfile} />;
+  return <ProfilePage {...props} profile={props.profile} />;
 };
 
 const mapStateToProps = (state) => {
   return {
-    currentUserProfile: state.profilePage.currentUserProfile,
+    profile: state.profilePage.profile,
+    status: state.profilePage.status,
     userId: state.auth.id,
     isLoading: state.profilePage.isLoading,
   };
 };
 
-export default connect(mapStateToProps, { setCurrentUser })(ProfilePageContainer);
+export default connect(mapStateToProps, {
+  getUserProfile,
+  getUserStatus,
+  updateUserStatus,
+})(ProfilePageContainer);

@@ -3,12 +3,13 @@ import {
   CHANGE_NEW_POST_VALUE,
   SET_USER_PROFILE,
   SET_USER_PROFILE_IN_PROGRESS,
+  SET_USER_STATUS,
 } from '../actionTypes';
 
-export const setUserProfile = (currentUserProfile) => {
+export const setUserProfile = (profile) => {
   return {
     type: SET_USER_PROFILE,
-    payload: currentUserProfile,
+    payload: profile,
   };
 };
 
@@ -16,6 +17,13 @@ export const setUserProfileInProgress = (value) => {
   return {
     type: SET_USER_PROFILE_IN_PROGRESS,
     payload: value,
+  };
+};
+
+export const setUserStatus = (status) => {
+  return {
+    type: SET_USER_STATUS,
+    payload: status,
   };
 };
 

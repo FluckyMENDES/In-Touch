@@ -3,13 +3,15 @@ import {
   CHANGE_NEW_POST_VALUE,
   SET_USER_PROFILE,
   SET_USER_PROFILE_IN_PROGRESS,
+  SET_USER_STATUS,
 } from '../actionTypes';
 import profileAvatar from '../../assets/img/mock-profile-avatar.jpg';
 
 const initialState = {
   newPostValue: '',
-  currentUserProfile: null,
+  profile: null,
   isLoading: true,
+  status: '',
   posts: [
     {
       id: 1,
@@ -40,7 +42,7 @@ const profileReducer = (state = initialState, action) => {
     case SET_USER_PROFILE:
       return {
         ...state,
-        currentUserProfile: action.payload,
+        profile: action.payload,
       };
 
     case SET_USER_PROFILE_IN_PROGRESS: {
@@ -49,6 +51,11 @@ const profileReducer = (state = initialState, action) => {
         isLoading: action.payload,
       };
     }
+    case SET_USER_STATUS:
+      return {
+        ...state,
+        status: action.payload,
+      };
     case ADD_POST:
       const newPost = {
         id: state.posts.length + 1,
