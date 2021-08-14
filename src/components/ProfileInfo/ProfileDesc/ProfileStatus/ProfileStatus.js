@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import classes from './ProfileStatus.module.scss';
 
-const ProfileStatus = ({ text, updateUserStatus }) => {
+const ProfileStatus = ({ text, updateUserStatus, isCurrentUser }) => {
   const [isEditMode, toggleEditMode] = useState(false);
   const [status, setLocalStatus] = useState(text);
 
@@ -31,7 +31,7 @@ const ProfileStatus = ({ text, updateUserStatus }) => {
 
   return (
     <div className={classes.ProfileStatus}>
-      {isEditMode ? (
+      {isEditMode && isCurrentUser ? (
         <input
           onKeyDown={onStatusEnterKeyDown}
           onChange={onStatusChange}

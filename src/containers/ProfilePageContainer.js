@@ -8,6 +8,15 @@ const ProfilePageContainer = (props) => {
   let { id } = useParams();
   const { getUserProfile, getUserStatus } = props;
 
+  // TODO: Refator this
+  let isCurrentUser = false;
+  if (props.profile) {
+    if (props.profile.userId === props.userId) {
+      isCurrentUser = true;
+    }
+  }
+
+  // TODO: Refator this
   if (!id) {
     id = props.userId;
   }
@@ -19,7 +28,7 @@ const ProfilePageContainer = (props) => {
     }
   }, [getUserStatus, getUserProfile, id]);
 
-  return <ProfilePage {...props} profile={props.profile} />;
+  return <ProfilePage {...props} isCurrentUser={isCurrentUser} profile={props.profile} />;
 };
 
 const mapStateToProps = (state) => {
