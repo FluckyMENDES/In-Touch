@@ -8,6 +8,9 @@ const authAPI = {
   getProfile() {
     return axios.get(`/auth/me`);
   },
+  auth(data) {
+    return axios.post(`/auth/login`, data);
+  },
 };
 
 export default authAPI;
