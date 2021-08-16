@@ -7,16 +7,16 @@ import NewsPage from './pages/NewsPage/NewsPage';
 import MusicPage from './pages/MusicPage/MusicPage';
 import PeoplePage from './pages/PeoplePage/PeoplePage';
 import SettingsPage from './pages/SettingsPage/SettingsPage';
-import Login from './components/Login/Login';
+import Login from './containers/LoginContainer';
 import Welcome from './components/Welcome/Welcome';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { authUser } from './store/thunks/auth';
+import { getAuthUserData } from './store/thunks/auth';
 
-function App({ isUserAuth, authUser }) {
+function App({ isUserAuth, getAuthUserData }) {
   useEffect(() => {
-    authUser();
-  }, [authUser]);
+    getAuthUserData();
+  }, [getAuthUserData]);
 
   return (
     <div className="App container">
@@ -44,4 +44,4 @@ const mapStateToProps = (state) => ({
   isUserAuth: state.auth.isAuth,
 });
 
-export default connect(mapStateToProps, { authUser })(App);
+export default connect(mapStateToProps, { getAuthUserData })(App);

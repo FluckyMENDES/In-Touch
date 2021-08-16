@@ -4,23 +4,55 @@
   left: 0;
   right: 0;
   background-color: var(--color-white);
+  height: var(--header-height);
+  border-bottom: 1px solid var(--color-gray-150);
 
   &Container {
     display: flex;
     align-items: center;
-    height: var(--header-height);
-    padding: 0.8rem;
+    height: 100%;
   }
 
-  & svg {
-    margin-right: 10px;
+  & .wrapper {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    padding: 0.8rem;
+    & > svg {
+      margin-right: 10px;
+      flex-shrink: 0;
+      width: calc(var(--header-height) - 1.6rem);
+      height: calc(var(--header-height) - 1.6rem);
+    }
   }
 
   & h1 {
     font-size: 2.2rem;
+    margin: 0;
   }
 
   &Login {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
     margin-left: auto;
+    height: 100%;
+  }
+
+  &SignIn {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: color 0.15 ease;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--color-primary);
+    }
+
+    &:active {
+      color: var(--color-primary-dark);
+    }
   }
 }
