@@ -11,12 +11,15 @@ import Login from './containers/LoginContainer';
 import Welcome from './components/Welcome/Welcome';
 import { Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getAuthUserData } from './store/thunks/auth';
+import { initialize } from './store/thunks/app';
+import Preloader from './components/UI/Preloader/Preloader';
 
-function App({ isUserAuth, getAuthUserData }) {
+function App({ isUserAuth, isInitialized, initialize }) {
   useEffect(() => {
-    getAuthUserData();
-  }, [getAuthUserData]);
+    initialize(true);
+  }, [initialize]);
+
+  if (!isInitialized) return <Preloader center />;
 
   return (
     <div className="App container">
@@ -40,8 +43,12 @@ function App({ isUserAuth, getAuthUserData }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  isUserAuth: state.auth.isAuth,
-});
+const mapStateToProps = (state) => {
+  // debugger;
+  return {
+    isUserAuth: state.auth.isAuth,
+    isInitialized: state.app.isInitialized,
+  };
+};
 
-export default connect(mapStateToProps, { getAuthUserData })(App);
+export default connect(mapStateToProps, { initialize })(App);
