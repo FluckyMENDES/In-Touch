@@ -39,4 +39,20 @@
     margin-left: auto;
     height: 100%;
   }
+
+  &SignIn {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    transition: color 0.15 ease;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--color-primary);
+    }
+
+    &:active {
+      color: var(--color-primary-dark);
+    }
+  }
 }

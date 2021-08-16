@@ -7,6 +7,7 @@ const LoginContainer = (props) => <Login {...props} />;
 
 const mapStateToProps = (state) => ({
   isAuth: state.auth.isAuth,
+  error: state.auth.loginFormError,
 });
 
 export default connect(mapStateToProps, { login })(LoginContainer);

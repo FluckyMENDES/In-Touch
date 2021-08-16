@@ -1,5 +1,5 @@
 import authAPI from '../../api/auth';
-import { setAuthUserData } from '../actions/auth';
+import { setAuthUserData, setLoginFormError } from '../actions/auth';
 
 export const getAuthUserData = () => (dispatch) => {
   authAPI.getProfile().then((response) => {
@@ -14,6 +14,8 @@ export const login = (email, password, rememberMe) => (dispatch) => {
   authAPI.login(email, password, rememberMe).then((response) => {
     if (response.data.resultCode === 0) {
       dispatch(getAuthUserData());
+    } else {
+      dispatch(setLoginFormError(response.data.messages.join(' ')));
     }
   });
 };

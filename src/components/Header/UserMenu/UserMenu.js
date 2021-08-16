@@ -31,7 +31,7 @@ const UserMenu = ({ login, logoutHandle }) => {
             <Link to="/settings">Settings</Link>
           </li>
           <li>
-            <Link to="/logout" onClick={logoutHandle}>
+            <Link to="/" onClick={logoutHandle}>
               Logout
             </Link>
           </li>

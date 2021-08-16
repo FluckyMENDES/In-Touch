@@ -17,7 +17,9 @@ const Header = ({ isAuth, login, logout }) => {
           {isAuth ? (
             <UserMenu login={login} logoutHandle={logout} />
           ) : (
-            <Link to="/login">Sign In</Link>
+            <Link to="/login" className={classes.HeaderSignIn}>
+              Sign In
+            </Link>
           )}
         </div>
       </div>

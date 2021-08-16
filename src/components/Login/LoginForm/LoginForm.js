@@ -2,8 +2,10 @@ import React from 'react';
 import classes from './LoginForm.module.scss';
 import { useForm } from 'react-hook-form';
 import Input from '../../UI/Input/Input';
+import Button from '../../UI/Button/Button';
+import { AiOutlineWarning } from 'react-icons/ai';
 
-const LoginForm = ({ loginHandle }) => {
+const LoginForm = ({ loginHandle, error }) => {
   const {
     handleSubmit,
     register,
@@ -43,7 +45,16 @@ const LoginForm = ({ loginHandle }) => {
           <span>Remember me</span>
         </label>
       </div>
-      <button type="submit">Login</button>
+      {error && (
+        <div className={classes.SummaryError}>
+          <AiOutlineWarning />
+          {error}
+        </div>
+      )}
+
+      <Button type="submit" kind="primary">
+        Login
+      </Button>
     </form>
   );
 };
