@@ -3,7 +3,7 @@ import classes from './Header.module.scss';
 import { ReactComponent as Logo } from './../../assets/img/logo.svg';
 import { NavLink } from 'react-router-dom';
 
-const Header = ({ isAuth, login }) => {
+const Header = ({ isAuth, login, logout }) => {
   const cls = [classes.Header];
   return (
     <header className={cls.join(' ')}>
@@ -11,7 +11,14 @@ const Header = ({ isAuth, login }) => {
         <Logo fill="#1877f2" />
         <h1>IN TOUCH</h1>
         <div className={classes.HeaderLogin}>
-          {isAuth ? <span>{login}</span> : <NavLink to="/login">Login</NavLink>}
+          {isAuth ? (
+            <>
+              <span>{login}</span>
+              <button onClick={logout}>logout</button>
+            </>
+          ) : (
+            <NavLink to="/login">Login</NavLink>
+          )}
         </div>
       </div>
     </header>

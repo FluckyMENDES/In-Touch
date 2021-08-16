@@ -3,7 +3,7 @@ import classes from './LoginForm.module.scss';
 import { useForm } from 'react-hook-form';
 import Input from '../../UI/Input/Input';
 
-const LoginForm = () => {
+const LoginForm = ({ loginHandle }) => {
   const {
     handleSubmit,
     register,
@@ -11,7 +11,7 @@ const LoginForm = () => {
   } = useForm({ mode: 'onTouched' });
 
   const onSubmit = (data) => {
-    console.log(data);
+    loginHandle(data.email, data.password, data.rememberMe);
   };
 
   return (
