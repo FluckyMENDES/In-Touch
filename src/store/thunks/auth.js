@@ -2,7 +2,7 @@ import authAPI from '../../api/auth';
 import { setAuthUserData, setLoginFormError } from '../actions/auth';
 
 export const getAuthUserData = () => (dispatch) => {
-  authAPI.getProfile().then((response) => {
+  return authAPI.getProfile().then((response) => {
     const { id, email, login } = response.data.data;
     if (response.data.resultCode === 0) {
       dispatch(setAuthUserData(id, email, login, true));
