@@ -6,9 +6,9 @@ import usersReducer from './usersReducer';
 import authReducer from './authReducer';
 
 export const rootReducer = combineReducers({
-  profilePage: profileReducer,
-  dialogsPage: dialogsReducer,
+  profile: profileReducer,
+  dialogs: dialogsReducer,
   app: appReducer,
-  usersPage: usersReducer,
+  users: usersReducer,
   auth: authReducer,
 });

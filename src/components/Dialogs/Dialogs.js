@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './Dialogs.module.scss';
 import Dialog from './Dialog/Dialog';
 import { connect } from 'react-redux';
+import { dialogsSelector } from '../../store/selectors/dialogs';
 
 const Dialogs = ({ dialogs }) => {
   const renderItems = (items) =>
@@ -17,7 +18,7 @@ const Dialogs = ({ dialogs }) => {
 };
 
 const mapStateToProps = (state) => ({
-  dialogs: state.dialogsPage.dialogs,
+  dialogs: dialogsSelector(state),
 });
 
 export default connect(mapStateToProps)(Dialogs);

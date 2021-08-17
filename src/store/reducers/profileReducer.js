@@ -30,7 +30,7 @@ const initialState = {
     {
       id: 3,
       author: 'Username3',
-      authorAvatarUrl: 'https://s1.1zoom.ru/big7/888/Eyes_Owls_Bubo_502568.jpg',
+      authorAvatarUrl: 'https://www.1zoom.ru/prev2/323/322509.jpg',
       date: '03.03.2002',
       text: 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam possimus eaque maiores, in et nisi excepturi sint molestiae exercitationem mollitia.',
     },

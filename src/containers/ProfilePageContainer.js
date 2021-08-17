@@ -3,6 +3,8 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage';
 import { connect } from 'react-redux';
 import { getUserProfile, getUserStatus, updateUserStatus } from '../store/thunks/profile';
 import { useParams } from 'react-router-dom';
+import { isLoadingSelector, profileSelector, statusSelector } from '../store/selectors/profile';
+import { idSelector } from '../store/selectors/auth';
 
 const ProfilePageContainer = (props) => {
   let { id } = useParams();
@@ -33,10 +35,10 @@ const ProfilePageContainer = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    profile: state.profilePage.profile,
-    status: state.profilePage.status,
-    userId: state.auth.id,
-    isLoading: state.profilePage.isLoading,
+    profile: profileSelector(state),
+    status: statusSelector(state),
+    userId: idSelector(state),
+    isLoading: isLoadingSelector(state),
   };
 };
 
