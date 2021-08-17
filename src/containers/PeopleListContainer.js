@@ -4,6 +4,14 @@ import { changeCurrentPage } from '../store/actions/users';
 import Preloader from '../components/UI/Preloader/Preloader';
 import PeopleList from '../components/PeopleList/PeopleList';
 import { getUsers, follow, unfollow } from '../store/thunks/users';
+import {
+  currentPageSelector,
+  followingInProgressSelector,
+  isLoadingSelector,
+  pageSizeSelector,
+  totalUsersCountSelector,
+  usersSelector,
+} from '../store/selectors/users';
 
 const PeopleListContainer = (props) => {
   const { pageSize, currentPage, isLoading, getUsers } = props;
@@ -16,12 +24,12 @@ const PeopleListContainer = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  users: state.usersPage.users,
-  pageSize: state.usersPage.pageSize,
-  totalUsersCount: state.usersPage.totalUsersCount,
-  currentPage: state.usersPage.currentPage,
-  isLoading: state.usersPage.isLoading,
-  followingInProgress: state.usersPage.followingInProgress,
+  users: usersSelector(state),
+  pageSize: pageSizeSelector(state),
+  totalUsersCount: totalUsersCountSelector(state),
+  currentPage: currentPageSelector(state),
+  isLoading: isLoadingSelector(state),
+  followingInProgress: followingInProgressSelector(state),
 });
 
 export default connect(mapStateToProps, {

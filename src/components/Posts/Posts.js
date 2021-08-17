@@ -21,9 +21,10 @@ const Posts = ({ newPostValue, posts, newPostChangeHandler, newPostAddHandler })
   );
 };
 
+// TODO: перенести обработку поля ввода в локальный state
 const mapStateToProps = (state) => ({
-  newPostValue: state.profilePage.newPostValue,
-  posts: state.profilePage.posts,
+  newPostValue: state.profile.newPostValue,
+  posts: state.profile.posts,
 });
 
 const mapDispatchToProps = (dispatch) => ({

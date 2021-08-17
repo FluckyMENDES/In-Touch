@@ -44,9 +44,10 @@ const Messages = ({
   );
 };
 
+// TODO: Перенести изменение поля ввода в локальный стейт
 const mapStateToProps = (state) => ({
-  messages: state.dialogsPage.messages,
-  newMessageValue: state.dialogsPage.newMessageValue,
+  messages: state.dialogs.messages,
+  newMessageValue: state.dialogs.newMessageValue,
 });
 
 const mapDispatchToProps = (dispatch) => ({

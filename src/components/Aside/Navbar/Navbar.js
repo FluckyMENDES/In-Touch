@@ -20,16 +20,16 @@ const Navbar = () => {
         title: 'People',
         exact: false,
       },
-      {
-        path: '/news',
-        title: 'News',
-        exact: false,
-      },
-      {
-        path: '/music',
-        title: 'Music',
-        exact: false,
-      },
+      // {
+      //   path: '/news',
+      //   title: 'News',
+      //   exact: false,
+      // },
+      // {
+      //   path: '/music',
+      //   title: 'Music',
+      //   exact: false,
+      // },
       {
         path: '/settings',
         title: 'Settings',
